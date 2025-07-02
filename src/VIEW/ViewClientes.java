@@ -1,0 +1,803 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package VIEW;
+
+import CLASSES.Cliente;
+//import DAO.connectDAO;
+import DAO.ClienteDAO;
+import javax.swing.JOptionPane;
+
+/**
+ * @author Ryan Carlo Negretti Pereira
+ */
+public class ViewClientes extends javax.swing.JFrame {
+
+    public ViewClientes() {
+        initComponents();
+    }
+
+    String operacaoAtivaGlobal = "NENHUM";
+
+    private void limparCampos() {
+        jTextFieldID.setText(" ");
+        jTextFieldNome.setText(" ");
+        jTextFieldCPF.setText(" ");
+        jTextFieldTelefone.setText(" ");
+        jTextFieldEndereco.setText(" ");
+        jTextFieldComplemento.setText(" ");
+        jTextFieldCidade.setText(" ");
+        jTextFieldBairro.setText(" ");
+        jTextFieldNumero.setText(" ");
+        jTextFieldCNPJ.setText(" ");
+        jTextFieldCEP.setText(" ");
+        jTextFieldEmail.setText(" ");
+        jComboBoxSexo.setSelectedIndex(0);
+        jComboBoxUF.setSelectedIndex(0);
+    }
+
+    private void camposON() {
+        jLabelNome.setVisible(true);
+        jLabelEndereco.setVisible(true);
+        jLabelBairro.setVisible(true);
+        jLabelCPF.setVisible(true);
+        jLabelTelefone.setVisible(true);
+        jLabelCNPJ.setVisible(true);
+        jLabelSexo.setVisible(true);
+        jLabelEmail.setVisible(true);
+        jLabelCEP.setVisible(true);
+        jLabelCidade.setVisible(true);
+        jLabelComplemento.setVisible(true);
+        jLabelNumero.setVisible(true);
+        jLabelUF.setVisible(true);
+        jTextFieldNome.setVisible(true);
+        jTextFieldEndereco.setVisible(true);
+        jTextFieldBairro.setVisible(true);
+        jTextFieldCPF.setVisible(true);
+        jTextFieldTelefone.setVisible(true);
+        jTextFieldCNPJ.setVisible(true);
+        jTextFieldEmail.setVisible(true);
+        jTextFieldCEP.setVisible(true);
+        jTextFieldCidade.setVisible(true);
+        jTextFieldComplemento.setVisible(true);
+        jTextFieldNumero.setVisible(true);
+        jComboBoxSexo.setVisible(true);
+        jComboBoxUF.setVisible(true);
+    }
+
+    private void camposOFF() {
+        jLabelNome.setVisible(false);
+        jLabelEndereco.setVisible(false);
+        jLabelBairro.setVisible(false);
+        jLabelCPF.setVisible(false);
+        jLabelTelefone.setVisible(false);
+        jLabelCNPJ.setVisible(false);
+        jLabelSexo.setVisible(false);
+        jLabelEmail.setVisible(false);
+        jLabelCEP.setVisible(false);
+        jLabelCidade.setVisible(false);
+        jLabelComplemento.setVisible(false);
+        jLabelNumero.setVisible(false);
+        jLabelUF.setVisible(false);
+        jTextFieldNome.setVisible(false);
+        jTextFieldEndereco.setVisible(false);
+        jTextFieldBairro.setVisible(false);
+        jTextFieldCPF.setVisible(false);
+        jTextFieldTelefone.setVisible(false);
+        jTextFieldCNPJ.setVisible(false);
+        jTextFieldEmail.setVisible(false);
+        jTextFieldCEP.setVisible(false);
+        jTextFieldCidade.setVisible(false);
+        jTextFieldComplemento.setVisible(false);
+        jTextFieldNumero.setVisible(false);
+        jComboBoxSexo.setVisible(false);
+        jComboBoxUF.setVisible(false);
+    }
+
+    public ViewClientes(String operacaoAtiva) {
+        initComponents();
+        operacaoAtivaGlobal = operacaoAtiva;
+        String operacao = "INCLUIR";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposON();
+            jButtonCadastrar.setVisible(true);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(false);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarAlterar";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+    }
+
+    Cliente cliente_tela = new Cliente();
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jButton1 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelEndereco = new javax.swing.JLabel();
+        jLabelBairro = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
+        jTextFieldEndereco = new javax.swing.JTextField();
+        jTextFieldBairro = new javax.swing.JTextField();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jLabelCPF = new javax.swing.JLabel();
+        jTextFieldCPF = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JLabel();
+        jTextFieldTelefone = new javax.swing.JTextField();
+        jLabelCNPJ = new javax.swing.JLabel();
+        jTextFieldCNPJ = new javax.swing.JTextField();
+        jLabelSexo = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jLabelCEP = new javax.swing.JLabel();
+        jTextFieldCEP = new javax.swing.JTextField();
+        jLabelUF = new javax.swing.JLabel();
+        jLabelCidade = new javax.swing.JLabel();
+        jTextFieldCidade = new javax.swing.JTextField();
+        jLabelComplemento = new javax.swing.JLabel();
+        jTextFieldComplemento = new javax.swing.JTextField();
+        jLabelNumero = new javax.swing.JLabel();
+        jTextFieldNumero = new javax.swing.JTextField();
+        jLabelID = new javax.swing.JLabel();
+        jTextFieldID = new javax.swing.JTextField();
+        jComboBoxSexo = new javax.swing.JComboBox<>();
+        jComboBoxUF = new javax.swing.JComboBox<>();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabelNome.setText("NOME:");
+
+        jLabelEndereco.setText("ENDEREÇO:");
+
+        jLabelBairro.setText("BAIRRO:");
+
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
+
+        jTextFieldEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEnderecoActionPerformed(evt);
+            }
+        });
+
+        jTextFieldBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBairroActionPerformed(evt);
+            }
+        });
+
+        jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
+        jLabelCPF.setText("CPF: ");
+
+        jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCPFActionPerformed(evt);
+            }
+        });
+
+        jLabelTelefone.setText("TELEFONE:");
+
+        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefoneActionPerformed(evt);
+            }
+        });
+
+        jLabelCNPJ.setText("CNPJ:");
+
+        jTextFieldCNPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCNPJActionPerformed(evt);
+            }
+        });
+
+        jLabelSexo.setText("SEXO:");
+
+        jLabelEmail.setText("E-MAIL:");
+
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmailActionPerformed(evt);
+            }
+        });
+
+        jLabelCEP.setText("CEP:");
+
+        jTextFieldCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCEPActionPerformed(evt);
+            }
+        });
+
+        jLabelUF.setText("UF:");
+
+        jLabelCidade.setText("CIDADE:");
+
+        jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCidadeActionPerformed(evt);
+            }
+        });
+
+        jLabelComplemento.setText("COMPLEMENTO:");
+
+        jTextFieldComplemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldComplementoActionPerformed(evt);
+            }
+        });
+
+        jLabelNumero.setText("NUMERO:");
+
+        jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNumeroActionPerformed(evt);
+            }
+        });
+
+        jLabelID.setText("ID:");
+
+        jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDActionPerformed(evt);
+            }
+        });
+
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecionar -", "M", "F" }));
+        jComboBoxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSexoActionPerformed(evt);
+            }
+        });
+
+        jComboBoxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecionar -", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
+        jComboBoxUF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxUFActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNumero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelBairro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCidade))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabelCNPJ)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldCNPJ))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabelEndereco)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelComplemento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelCEP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldCEP))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelCPF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelSexo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTelefone)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelUF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAlterar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNome)))
+                .addGap(49, 49, 49))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelID)
+                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNome)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPF)
+                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSexo)
+                    .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTelefone)
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUF)
+                    .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEndereco)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelComplemento)
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNumero)
+                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBairro)
+                    .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCNPJ)
+                    .addComponent(jTextFieldCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCEP)
+                    .addComponent(jTextFieldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmail)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCidade)
+                    .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonAlterar))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        //CADASTRAR DADOS
+        String operacao = "INCLUIR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            Cliente dados_cliente = new Cliente();
+            dados_cliente.setNome(jTextFieldNome.getText());
+            dados_cliente.setEndereco(jTextFieldEndereco.getText());
+            dados_cliente.setBairro(jTextFieldBairro.getText());
+            dados_cliente.setCPF(jTextFieldCPF.getText());
+            dados_cliente.setTelefone(jTextFieldTelefone.getText());
+            dados_cliente.setCNPJ(jTextFieldCNPJ.getText());
+            dados_cliente.setEmail(jTextFieldEmail.getText());
+            dados_cliente.setCEP(jTextFieldCEP.getText());
+            dados_cliente.setCidade(jTextFieldCidade.getText());
+            dados_cliente.setComplemento(jTextFieldComplemento.getText());
+            dados_cliente.setNumero(jTextFieldNumero.getText());
+            dados_cliente.setId(Integer.parseInt(jTextFieldID.getText()));
+            dados_cliente.setSexo(jComboBoxSexo.getSelectedItem().toString());
+            dados_cliente.setUF(jComboBoxUF.getSelectedItem().toString());
+
+            ClienteDAO objcon = new ClienteDAO();
+
+            objcon.insereRegistroJFBD("CLIENTES", dados_cliente.dadosSQLValues());
+
+            limparCampos();
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jTextFieldEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEnderecoActionPerformed
+
+    private void jTextFieldBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBairroActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        //LIMPAR TELA
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        //BUSCAR DADOS
+        String operacao = "PesquisarAlterar";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ClienteDAO objcon = new ClienteDAO();
+            Cliente dados_cliente;
+            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI = '"
+                    + jTextFieldID.getText() + "'");
+
+            if (dados_cliente != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNome.setText(dados_cliente.getNome());
+                jTextFieldEndereco.setText(dados_cliente.getEndereco());
+                jTextFieldBairro.setText(dados_cliente.getBairro());
+                jTextFieldCPF.setText(dados_cliente.getCPF());
+                jTextFieldTelefone.setText(dados_cliente.getTelefone());
+                jTextFieldCNPJ.setText(dados_cliente.getCNPJ());
+                jTextFieldCEP.setText(dados_cliente.getCEP());
+                //jTextFieldEmail.setText(dados_cliente.getEmail());
+                jTextFieldCidade.setText(dados_cliente.getCidade());
+                jTextFieldComplemento.setText(dados_cliente.getComplemento());
+                jTextFieldNumero.setText(dados_cliente.getNumero());
+                jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
+                jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+                //jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(false);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Cliente não encontrado.");
+            }
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ClienteDAO objcon = new ClienteDAO();
+            Cliente dados_cliente;
+            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI = '"
+                    + jTextFieldID.getText() + "'");
+
+            if (dados_cliente != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNome.setText(dados_cliente.getNome());
+                jTextFieldEndereco.setText(dados_cliente.getEndereco());
+                jTextFieldBairro.setText(dados_cliente.getBairro());
+                jTextFieldCPF.setText(dados_cliente.getCPF());
+                jTextFieldTelefone.setText(dados_cliente.getTelefone());
+                jTextFieldCNPJ.setText(dados_cliente.getCNPJ());
+                jTextFieldCEP.setText(dados_cliente.getCEP());
+                //jTextFieldEmail.setText(dados_cliente.getEmail());
+                jTextFieldCidade.setText(dados_cliente.getCidade());
+                jTextFieldComplemento.setText(dados_cliente.getComplemento());
+                jTextFieldNumero.setText(dados_cliente.getNumero());
+                jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
+                jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+                //jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(true);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Cliente não encontrado.");
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCPFActionPerformed
+
+    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
+
+    private void jTextFieldCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCEPActionPerformed
+
+    private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDActionPerformed
+
+    private void jTextFieldCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCidadeActionPerformed
+
+    private void jTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNumeroActionPerformed
+
+    private void jTextFieldComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldComplementoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldComplementoActionPerformed
+
+    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmailActionPerformed
+
+    private void jTextFieldCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCNPJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCNPJActionPerformed
+
+    private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSexoActionPerformed
+
+    private void jComboBoxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxUFActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // EXCLUIR
+        ClienteDAO objcon = new ClienteDAO();
+        Cliente dados_cliente;
+        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI='" + jTextFieldID.getText() + "'");
+
+        jTextFieldNome.setText(dados_cliente.getNome());
+        jTextFieldEndereco.setText(dados_cliente.getEndereco());
+        jTextFieldBairro.setText(dados_cliente.getBairro());
+        jTextFieldCPF.setText(dados_cliente.getCPF());
+        jTextFieldTelefone.setText(dados_cliente.getTelefone());
+        jTextFieldCNPJ.setText(dados_cliente.getCNPJ());
+        jTextFieldCEP.setText(dados_cliente.getCEP());
+        jTextFieldEmail.setText(dados_cliente.getEmail());
+        jTextFieldCidade.setText(dados_cliente.getCidade());
+        jTextFieldComplemento.setText(dados_cliente.getComplemento());
+        jTextFieldNumero.setText(dados_cliente.getNumero());
+        jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
+        jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+
+        objcon.excluiRegistroJFDB("CLIENTES", "ID_CLI='"
+                + jTextFieldID.getText() + "'", jTextFieldID.getText());
+
+        limparCampos();
+        dispose();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // ALTERAR
+        ClienteDAO objcon = new ClienteDAO();
+        Cliente dados_cliente;
+        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI='"
+                + jTextFieldID.getText() + "'");
+
+        dados_cliente.setNome(jTextFieldNome.getText());
+        dados_cliente.setEndereco(jTextFieldEndereco.getText());
+        dados_cliente.setBairro(jTextFieldBairro.getText());
+        dados_cliente.setCPF(jTextFieldCPF.getText());
+        dados_cliente.setTelefone(jTextFieldTelefone.getText());
+        dados_cliente.setCNPJ(jTextFieldCNPJ.getText());
+        dados_cliente.setEmail(jTextFieldEmail.getText());
+        dados_cliente.setCEP(jTextFieldCEP.getText());
+        dados_cliente.setUF(jComboBoxUF.getItemAt(WIDTH));
+        dados_cliente.setCidade(jTextFieldCidade.getText());
+        dados_cliente.setComplemento(jTextFieldComplemento.getText());
+        dados_cliente.setNumero(jTextFieldNumero.getText());
+        dados_cliente.setId(Integer.parseInt(jTextFieldID.getText()));
+        dados_cliente.setSexo(jComboBoxSexo.getItemAt(WIDTH));
+        try {
+            objcon.alteraRegistroJFDB("CLIENTES", dados_cliente.alteraDadosSQLValues(),
+                    "ID_CLI ='" + jTextFieldID.getText() + "'");
+            limparCampos();
+            dispose();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Não foi possível alterar. erro: " + erro.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ViewClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ViewClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ViewClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ViewClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ViewClientes().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JComboBox<String> jComboBoxSexo;
+    private javax.swing.JComboBox<String> jComboBoxUF;
+    private javax.swing.JLabel jLabelBairro;
+    private javax.swing.JLabel jLabelCEP;
+    private javax.swing.JLabel jLabelCNPJ;
+    private javax.swing.JLabel jLabelCPF;
+    private javax.swing.JLabel jLabelCidade;
+    private javax.swing.JLabel jLabelComplemento;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelEndereco;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelNumero;
+    private javax.swing.JLabel jLabelSexo;
+    private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelUF;
+    private javax.swing.JTextField jTextFieldBairro;
+    private javax.swing.JTextField jTextFieldCEP;
+    private javax.swing.JTextField jTextFieldCNPJ;
+    private javax.swing.JTextField jTextFieldCPF;
+    private javax.swing.JTextField jTextFieldCidade;
+    private javax.swing.JTextField jTextFieldComplemento;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldID;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldNumero;
+    private javax.swing.JTextField jTextFieldTelefone;
+    // End of variables declaration//GEN-END:variables
+
+}
