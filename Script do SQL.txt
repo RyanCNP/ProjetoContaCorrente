@@ -32,6 +32,7 @@ CREATE TABLE CLIENTES (
     CPF         CHAR(11)    NOT NULL,
     DATA_NASC   DATETIME    NOT NULL,
     CNPJ        CHAR(14)    NOT NULL,
+    EMAIL       VARCHAR(30) NOT NULL,
     SEXO        CHAR(2)     NOT NULL
 );
 GO
