@@ -368,7 +368,7 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenuClientesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesConsultarActionPerformed
         // Consultar Clientes
         String operacao = "CONSULTAR";
-        ViewClientes tela = new ViewClientes(operacao);
+        ViewClientesTabela tela = new ViewClientesTabela(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuClientesConsultarActionPerformed
 

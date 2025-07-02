@@ -27,7 +27,9 @@ public class Cliente {
     private String CNPJ;
     private String sexo;
 
-    public Cliente(int id, String nome, String CPF, String endereco, String numero, String complemento, String bairro, String cidade, String UF, String CEP, String email, String status) {
+    public Cliente(int id, String nome, String CPF, String endereco,
+            String numero, String complemento, String bairro, String cidade,
+            String UF, String CEP, String email, String status) {
         this.id = id;
         this.nome = nome;
         this.CPF = CPF;
@@ -93,20 +95,20 @@ public class Cliente {
     }
 
     public void setBairro(String bairro) {
-    if (!ClienteValidator.isValidBairro(bairro)) {
-        JOptionPane.showMessageDialog(null, "Bairro inválido. Máximo de 20 caracteres e não pode estar vazio.");
-        return;
+        if (!ClienteValidator.isValidBairro(bairro)) {
+            JOptionPane.showMessageDialog(null, "Bairro inválido. Máximo de 20 caracteres e não pode estar vazio.");
+            return;
+        }
+        this.bairro = bairro;
     }
-    this.bairro = bairro;
-}
 
     public void setCidade(String cidade) {
-    if (!ClienteValidator.isValidCidade(cidade)) {
-        JOptionPane.showMessageDialog(null, "Cidade inválida. Máximo de 30 caracteres e não pode estar vazia.");
-        return;
+        if (!ClienteValidator.isValidCidade(cidade)) {
+            JOptionPane.showMessageDialog(null, "Cidade inválida. Máximo de 30 caracteres e não pode estar vazia.");
+            return;
+        }
+        this.cidade = cidade;
     }
-    this.cidade = cidade;
-}
 
     public void setUF(String uf) {
         if (!ClienteValidator.isValidUF(uf)) {
@@ -133,12 +135,12 @@ public class Cliente {
     }
 
     public void setTelefone(String telefone) {
-    if (!ClienteValidator.isValidTelefone(telefone)) {
-        JOptionPane.showMessageDialog(null, "Telefone inválido. Deve conter entre 10 e 13 dígitos numéricos.");
-        return;
+        if (!ClienteValidator.isValidTelefone(telefone)) {
+            JOptionPane.showMessageDialog(null, "Telefone inválido. Deve conter entre 10 e 13 dígitos numéricos.");
+            return;
+        }
+        this.telefone = telefone;
     }
-    this.telefone = telefone;
-}
 
     public void setCNPJ(String cnpj) {
         if (!ClienteValidator.isValidCNPJ(cnpj)) {
@@ -230,7 +232,9 @@ public class Cliente {
                 + this.getTelefone() + "','"
                 + this.getCPF() + "','"
                 + "2020-01-01" + "','"
-                + this.getCNPJ() + "'";
+                + this.getCNPJ() + "', EMAIL = '"
+                + this.getEmail() + "', SEXO = '"
+                + this.getSexo() + "'";
 
         return dadosClientes;
     }
@@ -247,9 +251,11 @@ public class Cliente {
                 + this.getUF() + "',CEP ='"
                 + this.getCEP() + "',TELEFONE ='"
                 + this.getTelefone() + "',CPF ='"
-                + this.getCPF() + "',DATANASCIMENTO ='"
+                + this.getCPF() + "',DATA_NASC ='"
                 + "2020-01-01" + "',CNPJ = '"
-                + this.getCNPJ() + "'";
+                + this.getCNPJ() + "', EMAIL = '"
+                + this.getEmail() + "', SEXO = '"
+                + this.getSexo() + "'";
 
         return dadosClientes;
     }

@@ -5,7 +5,6 @@
 package VIEW;
 
 import CLASSES.Cliente;
-//import DAO.connectDAO;
 import DAO.ClienteDAO;
 import javax.swing.JOptionPane;
 
@@ -466,7 +465,7 @@ public class ViewClientes extends javax.swing.JFrame {
                     .addComponent(jButtonConsultar)
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonAlterar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -524,7 +523,7 @@ public class ViewClientes extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals((operacao))) {
             ClienteDAO objcon = new ClienteDAO();
             Cliente dados_cliente;
-            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI = '"
+            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID = '"
                     + jTextFieldID.getText() + "'");
 
             if (dados_cliente != null) {
@@ -536,13 +535,13 @@ public class ViewClientes extends javax.swing.JFrame {
                 jTextFieldTelefone.setText(dados_cliente.getTelefone());
                 jTextFieldCNPJ.setText(dados_cliente.getCNPJ());
                 jTextFieldCEP.setText(dados_cliente.getCEP());
-                //jTextFieldEmail.setText(dados_cliente.getEmail());
+                jTextFieldEmail.setText(dados_cliente.getEmail());
                 jTextFieldCidade.setText(dados_cliente.getCidade());
                 jTextFieldComplemento.setText(dados_cliente.getComplemento());
                 jTextFieldNumero.setText(dados_cliente.getNumero());
                 jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
                 jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
-                //jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+                jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
 
                 camposON();
                 jButtonCadastrar.setVisible(false);
@@ -558,7 +557,7 @@ public class ViewClientes extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals((operacao))) {
             ClienteDAO objcon = new ClienteDAO();
             Cliente dados_cliente;
-            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI = '"
+            dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID = '"
                     + jTextFieldID.getText() + "'");
 
             if (dados_cliente != null) {
@@ -570,13 +569,13 @@ public class ViewClientes extends javax.swing.JFrame {
                 jTextFieldTelefone.setText(dados_cliente.getTelefone());
                 jTextFieldCNPJ.setText(dados_cliente.getCNPJ());
                 jTextFieldCEP.setText(dados_cliente.getCEP());
-                //jTextFieldEmail.setText(dados_cliente.getEmail());
+                jTextFieldEmail.setText(dados_cliente.getEmail());
                 jTextFieldCidade.setText(dados_cliente.getCidade());
                 jTextFieldComplemento.setText(dados_cliente.getComplemento());
                 jTextFieldNumero.setText(dados_cliente.getNumero());
                 jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
                 jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
-                //jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
+                jComboBoxSexo.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
 
                 camposON();
                 jButtonCadastrar.setVisible(false);
@@ -638,7 +637,8 @@ public class ViewClientes extends javax.swing.JFrame {
         // EXCLUIR
         ClienteDAO objcon = new ClienteDAO();
         Cliente dados_cliente;
-        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI='" + jTextFieldID.getText() + "'");
+        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID = '"
+                + jTextFieldID.getText() + "'");
 
         jTextFieldNome.setText(dados_cliente.getNome());
         jTextFieldEndereco.setText(dados_cliente.getEndereco());
@@ -654,8 +654,8 @@ public class ViewClientes extends javax.swing.JFrame {
         jTextFieldID.setText(String.valueOf(dados_cliente.getId()));
         jComboBoxUF.setSelectedItem(dados_cliente.getUF().trim().toUpperCase());
 
-        objcon.excluiRegistroJFDB("CLIENTES", "ID_CLI='"
-                + jTextFieldID.getText() + "'", jTextFieldID.getText());
+        objcon.excluirRegistroJFDB("CLIENTES", "ID = '"
+                + jTextFieldID.getText() + "'");
 
         limparCampos();
         dispose();
@@ -665,7 +665,7 @@ public class ViewClientes extends javax.swing.JFrame {
         // ALTERAR
         ClienteDAO objcon = new ClienteDAO();
         Cliente dados_cliente;
-        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID_CLI='"
+        dados_cliente = objcon.pesquisaRegistroJFDB("CLIENTES", "ID = '"
                 + jTextFieldID.getText() + "'");
 
         dados_cliente.setNome(jTextFieldNome.getText());
