@@ -1,5 +1,5 @@
 # Projeto Conta Corrente
-Projeto desenvolvido durante as aulas de Técnicas de Programação I e II
+Projeto desenvolvido durante as aulas de Técnicas de Programação I e II durante o curso de DSM na Fatec Votorantim
 
 Para que este projeto funcione, serão necessárias as seguintes bibliotecas:  
 | Biblioteca | Versão |
