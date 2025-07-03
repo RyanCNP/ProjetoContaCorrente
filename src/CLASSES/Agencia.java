@@ -176,4 +176,20 @@ public class Agencia {
 
         return dadosAgencias;
     }
+    
+    public String alteraDadosSQLValues() {
+        String dadosClientes;
+        dadosClientes = "NOME ='"
+                + this.getNome() + "',ENDERECO ='"
+                + this.getEndereco() + "',NUMERO ='"
+                + this.getNumero() + "',COMPLEMENTO ='"
+                + this.getComplemento() + "',BAIRRO ='"
+                + this.getBairro() + "',CIDADE ='"
+                + this.getCidade() + "',UF ='"
+                + this.getUF() + "',CEP ='"
+                + this.getCEP() + "',TELEFONE ='"
+                + this.getTelefone() + "'";
+
+        return dadosClientes;
+    }
 }

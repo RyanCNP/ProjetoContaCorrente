@@ -5,7 +5,9 @@
 package VIEW;
 
 import CLASSES.Agencia;
+import DAO.AgenciasDAO;
 import DAO.ClienteDAO;
+import javax.swing.JOptionPane;
 
 /**
  * @author Ryan Carlo Negretti Pereira
@@ -20,36 +22,103 @@ public class ViewAgencias extends javax.swing.JFrame {
     }
     String operacaoAtivaGlobal = "Nenhum";
 
+    private void camposOB() {
+        jLabelNumeroAgencia.setVisible(true);
+        jTextFieldNumeroAgencia.setVisible(true);
+    }
+
+    private void limparCampos() {
+        jTextFieldNumeroAgencia.setText("");
+        jTextFieldNomeAgencia.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldNumero.setText("");
+        jTextFieldComplemento.setText("");
+        jTextFieldBairro.setText("");
+        jTextFieldCidade.setText("");
+        jComboBoxUF.setSelectedIndex(0);
+        jTextFieldCEP.setText("");
+        jTextFieldTelefone.setText("");
+    }
+
+    private void camposON() {
+        jLabelNomeAgencia.setVisible(true);
+        jLabelEndereco.setVisible(true);
+        jLabelNumero.setVisible(true);
+        jLabelComplemento.setVisible(true);
+        jLabelBairro.setVisible(true);
+        jLabelCidade.setVisible(true);
+        jLabelUF.setVisible(true);
+        jLabelCEP.setVisible(true);
+        jLabelTelefone.setVisible(true);
+
+        jTextFieldNomeAgencia.setVisible(true);
+        jTextFieldEndereco.setVisible(true);
+        jTextFieldNumero.setVisible(true);
+        jTextFieldComplemento.setVisible(true);
+        jTextFieldBairro.setVisible(true);
+        jTextFieldCidade.setVisible(true);
+        jComboBoxUF.setVisible(true);
+        jTextFieldCEP.setVisible(true);
+        jTextFieldTelefone.setVisible(true);
+    }
+
+    private void camposOFF() {
+        jLabelNomeAgencia.setVisible(false);
+        jLabelEndereco.setVisible(false);
+        jLabelNumero.setVisible(false);
+        jLabelComplemento.setVisible(false);
+        jLabelBairro.setVisible(false);
+        jLabelCidade.setVisible(false);
+        jLabelUF.setVisible(false);
+        jLabelCEP.setVisible(false);
+        jLabelTelefone.setVisible(false);
+
+        jTextFieldNomeAgencia.setVisible(false);
+        jTextFieldEndereco.setVisible(false);
+        jTextFieldNumero.setVisible(false);
+        jTextFieldComplemento.setVisible(false);
+        jTextFieldBairro.setVisible(false);
+        jTextFieldCidade.setVisible(false);
+        jComboBoxUF.setVisible(false);
+        jTextFieldCEP.setVisible(false);
+        jTextFieldTelefone.setVisible(false);
+    }
+
     public ViewAgencias(String operacaoAtiva) {
         initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
-        String operacao = "Incluir";
+        String operacao = "INCLUIR";
         if (operacaoAtiva.equals(operacao)) {
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
-            jLabel6.setVisible(true);
-            jLabel7.setVisible(true);
-            jLabel8.setVisible(true);
-            jLabel9.setVisible(true);
-            jLabel10.setVisible(true);
-            jLabel11.setVisible(true);
-            jTextField1.setVisible(true);
-            jTextField2.setVisible(true);
-            jTextField3.setVisible(true);
-            jTextField4.setVisible(true);
-            jTextField5.setVisible(true);
-            jTextField6.setVisible(true);
-            jTextField7.setVisible(true);
-            jTextField8.setVisible(true);
-            jTextField9.setVisible(true);
-            jTextField10.setVisible(true);
-            jTextField11.setVisible(true);
-            jButton1.setText("Incluir BD");
+            camposOB();
+            camposON();
+            jButtonCadastrar.setVisible(true);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(false);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarAlterar";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
         }
     }
+
     Agencia agencia_tela = new Agencia();
 
     /**
@@ -63,132 +132,149 @@ public class ViewAgencias extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabelNumeroAgencia = new javax.swing.JLabel();
+        jTextFieldNumeroAgencia = new javax.swing.JTextField();
+        jLabelNomeAgencia = new javax.swing.JLabel();
+        jTextFieldNomeAgencia = new javax.swing.JTextField();
+        jLabelEndereco = new javax.swing.JLabel();
+        jTextFieldEndereco = new javax.swing.JTextField();
+        jLabelNumero = new javax.swing.JLabel();
+        jTextFieldNumero = new javax.swing.JTextField();
+        jLabelComplemento = new javax.swing.JLabel();
+        jTextFieldComplemento = new javax.swing.JTextField();
+        jLabelBairro = new javax.swing.JLabel();
+        jTextFieldBairro = new javax.swing.JTextField();
+        jLabelCidade = new javax.swing.JLabel();
+        jTextFieldCidade = new javax.swing.JTextField();
+        jLabelUF = new javax.swing.JLabel();
+        jLabelCEP = new javax.swing.JLabel();
+        jTextFieldCEP = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JLabel();
+        jTextFieldTelefone = new javax.swing.JTextField();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jComboBoxUF = new javax.swing.JComboBox<>();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
 
         jLabel3.setText("Nome da Agência:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Número da Agência:");
+        jLabelNumeroAgencia.setText("NUMERO AGENCIA:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNumeroAgenciaActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Nome da Agência:");
+        jLabelNomeAgencia.setText("NOME AGENCIA:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldNomeAgenciaActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Endereço da Agência:");
+        jLabelEndereco.setText("ENDERECO:");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldEnderecoActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Número:");
+        jLabelNumero.setText("NUMERO:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jTextFieldNumeroActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Complemento:");
+        jLabelComplemento.setText("COMPLEMENTO:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jTextFieldComplementoActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Bairro:");
+        jLabelBairro.setText("BAIRRO:");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jTextFieldBairroActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Cidade:");
+        jLabelCidade.setText("CIDADE:");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                jTextFieldCidadeActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("UF:");
+        jLabelUF.setText("UF:");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        jLabelCEP.setText("CEP:");
+
+        jTextFieldCEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                jTextFieldCEPActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("CEP:");
+        jLabelTelefone.setText("TELEFONE:");
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                jTextFieldTelefoneActionPerformed(evt);
             }
         });
 
-        jLabel11.setText("Telefone:");
-
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecionar -", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
+        jComboBoxUF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jComboBoxUFActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
             }
         });
 
@@ -199,202 +285,311 @@ public class ViewAgencias extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addGap(11, 11, 11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(11, 11, 11)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(111, 111, 111))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                                .addComponent(jLabelNomeAgencia)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldNomeAgencia))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelNumeroAgencia)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldNumeroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelUF)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelCEP)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jTextFieldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelBairro)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldBairro))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelCidade)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelComplemento)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldComplemento))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelEndereco)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelTelefone)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelNumero)
+                                .addGap(11, 11, 11)
+                                .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonCadastrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jButtonLimpar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonConsultar))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(jButtonExcluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jButtonAlterar)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroAgencia)
+                    .addComponent(jTextFieldNumeroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNomeAgencia)
+                    .addComponent(jTextFieldNomeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelEndereco)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNumero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelComplemento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelBairro)
+                    .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCidade)
+                    .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelUF)
+                    .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCEP)
+                    .addComponent(jTextFieldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(jLabelTelefone)
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addGap(73, 73, 73))
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jButtonCadastrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonAlterar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNumeroAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroAgenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroAgenciaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNomeAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeAgenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeAgenciaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEnderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldEnderecoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jTextFieldComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldComplementoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_jTextFieldComplementoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jTextFieldBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBairroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jTextFieldBairroActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void jTextFieldCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jTextFieldCidadeActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void jTextFieldCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCEPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_jTextFieldCEPActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //CADASTRAR
-        String operacao = "Incluir";
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        //CADASTRAR DADOS
+        String operacao = "INCLUIR";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            Agencia dados_Agencias = new Agencia();
-            dados_Agencias.setNumAgencia(Integer.parseInt(jTextField1.getText()));
-            dados_Agencias.setNome(jTextField2.getText());
-            dados_Agencias.setEndereco(jTextField4.getText());
-            dados_Agencias.setNumero(jTextField5.getText());
-            dados_Agencias.setComplemento(jTextField6.getText());
-            dados_Agencias.setBairro(jTextField7.getText());
-            dados_Agencias.setCidade(jTextField8.getText());
-            dados_Agencias.setUF(jTextField9.getText());
-            dados_Agencias.setCEP(jTextField10.getText());
-            dados_Agencias.setTelefone(jTextField11.getText());
-            ClienteDAO objcon = new ClienteDAO();
-            objcon.insereRegistroJFBD("AGENCIAS", dados_Agencias.dadosSQLValues());
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jTextField6.setText("");
-            jTextField7.setText("");
-            jTextField8.setText("");
-            jTextField9.setText("");
-            jTextField10.setText("");
-            jTextField11.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
-    }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //LIMPAR CAMPOS
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-        jTextField10.setText("");
-        jTextField11.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+            Agencia dados_agencia = new Agencia();
+            dados_agencia.setNumAgencia(Integer.parseInt(jTextFieldNomeAgencia.getText()));
+            dados_agencia.setNome(jTextFieldNomeAgencia.getText());
+            dados_agencia.setEndereco(jTextFieldEndereco.getText());
+            dados_agencia.setBairro(jTextFieldBairro.getText());
+            dados_agencia.setTelefone(jTextFieldTelefone.getText());
+            dados_agencia.setCEP(jTextFieldCEP.getText());
+            dados_agencia.setCidade(jTextFieldCidade.getText());
+            dados_agencia.setComplemento(jTextFieldComplemento.getText());
+            dados_agencia.setNumero(jTextFieldNumero.getText());
+            dados_agencia.setUF(jComboBoxUF.getSelectedItem().toString());
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //CONSULTAR CAMPOS
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+            AgenciasDAO objcon = new AgenciasDAO();
+
+            objcon.insereRegistroJFBD("AGENCIAS", dados_agencia.dadosSQLValues());
+
+            limparCampos();
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        //LIMPAR CAMPOS
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        //BUSCAR DADOS
+        String operacao = "PesquisarAlterar";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            AgenciasDAO objcon = new AgenciasDAO();
+            Agencia dados_agencia;
+            dados_agencia = objcon.pesquisaRegistroJFDB("AGENCIAS", "NUM_AGE = '"
+                    + jTextFieldNumeroAgencia.getText() + "'");
+
+            if (dados_agencia != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_agencia.getNumAgencia()));
+                jTextFieldNomeAgencia.setText(dados_agencia.getNome());
+                jTextFieldEndereco.setText(dados_agencia.getEndereco());
+                jTextFieldBairro.setText(dados_agencia.getBairro());
+                jTextFieldTelefone.setText(dados_agencia.getTelefone());
+                jTextFieldCEP.setText(dados_agencia.getCEP());
+                jTextFieldCidade.setText(dados_agencia.getCidade());
+                jTextFieldComplemento.setText(dados_agencia.getComplemento());
+                jTextFieldNumero.setText(dados_agencia.getNumero());
+                jComboBoxUF.setSelectedItem(dados_agencia.getUF().trim().toUpperCase());
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(false);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Agencia não encontrado.");
+            }
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            AgenciasDAO objcon = new AgenciasDAO();
+            Agencia dados_agencia;
+            dados_agencia = objcon.pesquisaRegistroJFDB("AGENCIAS", "NUM_AGE = '"
+                    + jTextFieldNumeroAgencia.getText() + "'");
+
+            if (dados_agencia != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_agencia.getNumAgencia()));
+                jTextFieldNomeAgencia.setText(dados_agencia.getNome());
+                jTextFieldEndereco.setText(dados_agencia.getEndereco());
+                jTextFieldBairro.setText(dados_agencia.getBairro());
+                jTextFieldTelefone.setText(dados_agencia.getTelefone());
+                jTextFieldCEP.setText(dados_agencia.getCEP());
+                jTextFieldCidade.setText(dados_agencia.getCidade());
+                jTextFieldComplemento.setText(dados_agencia.getComplemento());
+                jTextFieldNumero.setText(dados_agencia.getNumero());
+                jComboBoxUF.setSelectedItem(dados_agencia.getUF().trim().toUpperCase());
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(true);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Agencia não encontrado.");
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jComboBoxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxUFActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // EXCLUIR
+        AgenciasDAO objcon = new AgenciasDAO();
+        Agencia dados_agencia;
+        dados_agencia = objcon.pesquisaRegistroJFDB("AGENCIAS", "NUM_AGE = '"
+                + jTextFieldNumeroAgencia.getText() + "'");
+
+        jTextFieldNumeroAgencia.setText(String.valueOf(dados_agencia.getNumAgencia()));
+        jTextFieldNomeAgencia.setText(dados_agencia.getNome());
+        jTextFieldEndereco.setText(dados_agencia.getEndereco());
+        jTextFieldBairro.setText(dados_agencia.getBairro());
+        jTextFieldTelefone.setText(dados_agencia.getTelefone());
+        jTextFieldCEP.setText(dados_agencia.getCEP());
+        jTextFieldCidade.setText(dados_agencia.getCidade());
+        jTextFieldComplemento.setText(dados_agencia.getComplemento());
+        jTextFieldNumero.setText(dados_agencia.getNumero());
+        jComboBoxUF.setSelectedItem(dados_agencia.getUF().trim().toUpperCase());
+
+        objcon.excluirRegistroJFDB("AGENCIAS", "NUM_AGE = '"
+                + jTextFieldNumeroAgencia.getText() + "'");
+
+        limparCampos();
+        dispose();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // ALTERAR
+        AgenciasDAO objcon = new AgenciasDAO();
+        Agencia dados_agencia;
+        dados_agencia = objcon.pesquisaRegistroJFDB("AGENCIAS", "NUM_AGE = '"
+                + jTextFieldNumeroAgencia.getText() + "'");
+
+        dados_agencia.setNome(jTextFieldNomeAgencia.getText());
+        dados_agencia.setEndereco(jTextFieldEndereco.getText());
+        dados_agencia.setBairro(jTextFieldBairro.getText());
+        dados_agencia.setTelefone(jTextFieldTelefone.getText());
+        dados_agencia.setCEP(jTextFieldCEP.getText());
+        dados_agencia.setUF(jComboBoxUF.getItemAt(WIDTH));
+        dados_agencia.setCidade(jTextFieldCidade.getText());
+        dados_agencia.setComplemento(jTextFieldComplemento.getText());
+        dados_agencia.setNumero(jTextFieldNumero.getText());
+        dados_agencia.setNumAgencia(Integer.parseInt(jTextFieldNumeroAgencia.getText()));
+
+        try {
+            objcon.alteraRegistroJFDB("AGENCIAS", dados_agencia.alteraDadosSQLValues(),
+                    "NUM_AGE ='" + jTextFieldNomeAgencia.getText() + "'");
+            limparCampos();
+            dispose();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Não foi possível alterar. erro: " + erro.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -687,30 +882,32 @@ public class ViewAgencias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JComboBox<String> jComboBoxUF;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabelBairro;
+    private javax.swing.JLabel jLabelCEP;
+    private javax.swing.JLabel jLabelCidade;
+    private javax.swing.JLabel jLabelComplemento;
+    private javax.swing.JLabel jLabelEndereco;
+    private javax.swing.JLabel jLabelNomeAgencia;
+    private javax.swing.JLabel jLabelNumero;
+    private javax.swing.JLabel jLabelNumeroAgencia;
+    private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelUF;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldBairro;
+    private javax.swing.JTextField jTextFieldCEP;
+    private javax.swing.JTextField jTextFieldCidade;
+    private javax.swing.JTextField jTextFieldComplemento;
+    private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldNomeAgencia;
+    private javax.swing.JTextField jTextFieldNumero;
+    private javax.swing.JTextField jTextFieldNumeroAgencia;
+    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

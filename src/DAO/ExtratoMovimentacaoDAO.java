@@ -5,8 +5,7 @@
 package DAO;
 
 /**
- *
- * @author perei
+ * @author Ryan Carlo Negretti Pereira
  */
 public class ExtratoMovimentacaoDAO {
     

@@ -4,6 +4,13 @@
  */
 package VIEW;
 
+import CLASSES.Agencia;
+import DAO.AgenciasDAO;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author perei
@@ -18,6 +25,19 @@ public class ViewAgenciasTabela extends javax.swing.JFrame {
     public ViewAgenciasTabela() {
         initComponents();
     }
+    
+    String operacaoAtivaGlobal = "NENHUM";
+
+    public ViewAgenciasTabela(String operacaoAtiva) {
+        initComponents();
+        operacaoAtivaGlobal = operacaoAtiva;
+        String operacao = "CONSULTAR";
+        if (operacaoAtiva.equals(operacao)) {
+            jTableAgencias.setVisible(true);
+        }
+    }
+
+    Agencia agencia_tela = new Agencia();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +48,83 @@ public class ViewAgenciasTabela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAgencias = new javax.swing.JTable();
+        jButtonConsultar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableAgencias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "NUM_AGE", "NOME", "ENDERECO", "NUMERO", "COMPLEMENTO", "BAIRRO", "CIDADE", "UF", "CEP", "TELEFONE"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableAgencias);
+
+        jButtonConsultar.setText("CONSULTAR REGISTROS");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonConsultar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // CONSULTAR TABELA
+        String operacao = "CONSULTAR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            try {
+                AgenciasDAO objcon = new AgenciasDAO();
+                ResultSet agencias_registradas = objcon.consultarRegistroJFDB("AGENCIAS");
+
+                // Usa o modelo geral não editável
+                jTableAgencias.setModel(new UTIL.TableModelNaoEditavel(agencias_registradas));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar historicos: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +152,8 @@ public class ViewAgenciasTabela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAgencias;
     // End of variables declaration//GEN-END:variables
 }
