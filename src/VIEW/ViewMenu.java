@@ -416,14 +416,14 @@ public class ViewMenu extends javax.swing.JFrame {
 
     private void jMenuHistoricoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHistoricoAlterarActionPerformed
         // Alterar Historico
-        String operacao = "PesquisaAlterar";
+        String operacao = "PesquisarAlterar";
         ViewHistorico tela = new ViewHistorico(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuHistoricoAlterarActionPerformed
 
     private void jMenuHistoricoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHistoricoExcluirActionPerformed
         // Excluir Historico
-        String operacao = "PesquisaExcluir";
+        String operacao = "PesquisarExcluir";
         ViewHistorico tela = new ViewHistorico(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuHistoricoExcluirActionPerformed
@@ -431,7 +431,7 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenuHistoricoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHistoricoConsultarActionPerformed
         // Consultar Historico
         String operacao = "CONSULTAR";
-        ViewHistorico tela = new ViewHistorico(operacao);
+        ViewHistoricoTabela tela = new ViewHistoricoTabela(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuHistoricoConsultarActionPerformed
 

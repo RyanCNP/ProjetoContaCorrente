@@ -4,18 +4,18 @@
  */
 package DAO;
 
-import CLASSES.Historico;
 import java.util.List;
+import CLASSES.Historico;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-// import javax.swing.table.AbstractTableModel;
 
 /**
  * @author Ryan Carlo Negretti Pereira
@@ -67,13 +67,13 @@ public class HistoricoDAO {
         }
     }
 
-    public void alteraRegistroJFDB(String table, String strDados, String pesquisaId) {
+    public void alteraRegistroJFDB(String tabela, String strDados, String pesquisaId) {
         con = connectDB();
         {
             Statement stmt;
             try {
                 stmt = con.createStatement();
-                String sql = "UPDATE dbo." + table + " SET " + strDados + " WHERE " + pesquisaId + ";";
+                String sql = "UPDATE dbo." + tabela + " SET " + strDados + " WHERE " + pesquisaId + ";";
                 try {
                     stmt.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Alteracao executada com sucesso!");
@@ -89,15 +89,40 @@ public class HistoricoDAO {
         }
     }
 
+    public void excluirRegistroJFDB(String tabela, String pesquisaID) {
+        con = connectDB();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            String sql = "DELETE FROM dbp. " + tabela
+                    + "WHERE ID = " + pesquisaID;
+
+            JOptionPane.showMessageDialog(null, "STRING DE DELETE: " + sql);
+
+            try {
+                stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "HISTORICO DELETADO COM SUCESSO!");
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public Historico pesquisaRegistroJFDB(String tabela, String pesquisaId) {
         Historico historicoReturn = new Historico();
-        String tabelaSGBD = "HISTORICOS";
+        String tabelaSGBD = "CLIENTES";
         if (tabela.equals(tabelaSGBD)) {
             con = connectDB();
             Statement stmt;
             try {
                 stmt = con.createStatement();
-                String sql = "SELECT * FROM " + tabela + " WHERE " + pesquisaId;
+                String sql = "SELECT * FROM dbo. " + tabela
+                        + "WHERE ID = " + pesquisaId;
                 try {
                     ResultSet dados;
                     dados = stmt.executeQuery(sql);
@@ -105,8 +130,8 @@ public class HistoricoDAO {
                         JOptionPane.showMessageDialog(null, "Nenhum registro foi"
                                 + " encontrado para essa pesquisa");
                     } else {
-                        historicoReturn.setId(Integer.parseInt(dados.getString("ID_HIS")));
-                        historicoReturn.setDescricao(dados.getString("DES_HIS"));
+                        historicoReturn.setId(dados.getInt("ID"));
+                        historicoReturn.setDescricao(dados.getString("DESCRICAO"));
                     }
                     con.close();
                     return historicoReturn;
@@ -124,79 +149,25 @@ public class HistoricoDAO {
         return historicoReturn;  //Retorno dos dados ou o erro
     }
 
-    public List<Historico> consultaRegistroBD() {
+    public ResultSet consultarRegistroJFDB(String tabela) {
         con = connectDB();
-        List<Historico> historicos = new ArrayList<>();
         Statement stmt;
         try {
             stmt = con.createStatement();
-            String sql = "SELECT * FROM HISTORICOS";
+            String sql = "SELECT * FROM dbo. " + tabela;
             try {
-                ResultSet dados = stmt.executeQuery(sql);
-                JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
-                int i = 0;
-                while (dados.next()) {
-                    if (i == 0) {
-                        i++;
-                        Historico historico = new Historico("ID_HIS", "DES_HIS");
-                        historicos.add(historico);
-                    }
-                    Historico historico = new Historico(dados.getString("ID_HIS"), dados.getString("DES_HIS"));
-                    historicos.add(historico);
-                }
-                con.close();
-                return historicos;
+                ResultSet dados;
+                dados = stmt.executeQuery(sql);
+                return dados;
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, ClienteDAO - Mensagem => " + erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, ClienteDAO - Estado => " + erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, ClienteDAO - Código => " + erro.getErrorCode());
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
             }
-            con.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-
-    public void excluiRegistroJFDB(String table, String pesquisaId, String numId) {
-        Statement stmt = null;
-        try {
-            con = connectDB();
-            stmt = con.createStatement();
-            con.setAutoCommit(false); // Inicia a transação
-            // Exclui da tabela CONTA_CORRENTE (dependente)
-            String sql = "DELETE FROM dbo.USUARIOS WHERE ID_HIS = " + pesquisaId;
-            stmt.executeUpdate(sql);
-            con.commit();
-        } catch (SQLException erro) {
-            if (erro.getMessage().toLowerCase().contains("fk") || erro.getMessage().toLowerCase().contains("violates")) {
-                JOptionPane.showMessageDialog(null,
-                        "Não é possível excluir o registro pois ele está relacionado a outros dados (chave estrangeira).");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir registros: " + erro.getMessage());
-            }
-            try {
-                if (con != null) {
-                    con.rollback(); // Reverte a transação em caso de erro
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao reverter transação: " + e.getMessage());
-            }
-            // Detecta erro de chave estrangeira
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.setAutoCommit(true);
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao fechar recursos: " + e.getMessage());
-            }
-        }
     }
 }

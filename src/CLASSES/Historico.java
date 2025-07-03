@@ -48,12 +48,18 @@ public class Historico {
     }
 
     public String dadosSQLValues() {
-
-        String dadosUsuarios = "'"
-                + this.getId() + "', '"
+        String dadosClientes;
+        dadosClientes = "'"
+                + this.getId() + "','"
                 + this.getDescricao() + "'";
 
-        return dadosUsuarios;
+        return dadosClientes;
     }
 
+    public String alteraDadosSQLValues() {
+        String dadosClientes;
+        dadosClientes = "DESCRICAO ='" + this.getDescricao() + "'";
+
+        return dadosClientes;
+    }
 }

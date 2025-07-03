@@ -684,7 +684,7 @@ public class ViewClientes extends javax.swing.JFrame {
         dados_cliente.setSexo(jComboBoxSexo.getItemAt(WIDTH));
         try {
             objcon.alteraRegistroJFDB("CLIENTES", dados_cliente.alteraDadosSQLValues(),
-                    "ID_CLI ='" + jTextFieldID.getText() + "'");
+                    "ID ='" + jTextFieldID.getText() + "'");
             limparCampos();
             dispose();
         } catch (Exception erro) {

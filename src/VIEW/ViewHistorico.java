@@ -5,7 +5,8 @@
 package VIEW;
 
 import CLASSES.Historico;
-import DAO.ClienteDAO;
+import DAO.HistoricoDAO;
+import javax.swing.JOptionPane;
 
 /**
  * @author Ryan Carlo Negretti Pereira
@@ -18,20 +19,62 @@ public class ViewHistorico extends javax.swing.JFrame {
     public ViewHistorico() {
         initComponents();
     }
-    String operacaoAtivaGlobal = "Nenhum";
+
+    String operacaoAtivaGlobal = "NENHUM";
+
+    private void limparCampos() {
+        jTextFieldID.setText(" ");
+        jTextFieldDescricao.setText(" ");
+    }
+
+    private void camposON() {
+        jLabelDescricao.setVisible(true);
+        jTextFieldDescricao.setVisible(true);
+    }
+
+    private void camposOFF() {
+        jLabelDescricao.setVisible(false);
+        jTextFieldDescricao.setVisible(false);
+    }
 
     public ViewHistorico(String operacaoAtiva) {
         initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
-        String operacao = "Incluir";
+        String operacao = "INCLUIR";
         if (operacaoAtiva.equals(operacao)) {
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jTextField1.setVisible(true);
-            jTextField2.setVisible(true);
-            jButton1.setText("Incluir BD");
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposON();
+            jButtonCadastrar.setVisible(true);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(false);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarAlterar";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabelID.setVisible(true);
+            jTextFieldID.setVisible(true);
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
         }
     }
+
     Historico historico_tela = new Historico();
 
     /**
@@ -43,50 +86,66 @@ public class ViewHistorico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabelID = new javax.swing.JLabel();
+        jTextFieldID = new javax.swing.JTextField();
+        jLabelDescricao = new javax.swing.JLabel();
+        jTextFieldDescricao = new javax.swing.JTextField();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("ID do Histórico");
+        jLabelID.setText("ID: ");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldIDActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Histórico:");
+        jLabelDescricao.setText("DESCRICAO:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldDescricaoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
             }
         });
 
@@ -95,26 +154,29 @@ public class ViewHistorico extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jLabelID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(jLabelDescricao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                                .addComponent(jTextFieldDescricao))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jButtonCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAlterar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,45 +184,138 @@ public class ViewHistorico extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelID)
+                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabelDescricao)
+                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonAlterar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldIDActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         //CADASTRAR
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String operacao = "INCLUIR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            Historico dados_historico = new Historico();
+            dados_historico.setId(Integer.parseInt(jTextFieldID.getText()));
+            dados_historico.setDescricao(jTextFieldDescricao.getText());
+
+            HistoricoDAO objcon = new HistoricoDAO();
+
+            objcon.insereRegistroJFBD("HISTORICOS", dados_historico.dadosSQLValues());
+
+            limparCampos();
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         //LIMPAR CAMPOS
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        //BUSCAR DADOS
+        String operacao = "PesquisarAlterar";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            HistoricoDAO objcon = new HistoricoDAO();
+            Historico dados_historico;
+            dados_historico = objcon.pesquisaRegistroJFDB("HISTORICOS", "ID = '"
+                    + jTextFieldID.getText() + "'");
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //CONSULTAR CAMPOS
+            if (dados_historico != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldID.setText(String.valueOf(dados_historico.getId()));
+                jTextFieldDescricao.setText(dados_historico.getDescricao());
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(false);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Historico não encontrado.");
+            }
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            HistoricoDAO objcon = new HistoricoDAO();
+            Historico dados_historico;
+            dados_historico = objcon.pesquisaRegistroJFDB("HISTORICOS", "ID = '"
+                    + jTextFieldID.getText() + "'");
+
+            if (dados_historico != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldID.setText(String.valueOf(dados_historico.getId()));
+                jTextFieldDescricao.setText(dados_historico.getDescricao());
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(true);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Historico não encontrado.");
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        //EXCLUIR
+        HistoricoDAO objcon = new HistoricoDAO();
+        Historico dados_historico;
+        dados_historico = objcon.pesquisaRegistroJFDB("HISTORICOS", "ID = '"
+                + jTextFieldID.getText() + "'");
+
+        jTextFieldID.setText(String.valueOf(dados_historico.getId()));
+        jTextFieldDescricao.setText(dados_historico.getDescricao());
+
+        objcon.excluirRegistroJFDB("HISTORICOS", "ID = '"
+                + jTextFieldID.getText() + "'");
+
+        limparCampos();
+        dispose();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        //ALTERAR
+        HistoricoDAO objcon = new HistoricoDAO();
+        Historico dados_historico;
+        dados_historico = objcon.pesquisaRegistroJFDB("HISTORICOS", "ID = '"
+                + jTextFieldID.getText() + "'");
+
+        dados_historico.setId(Integer.parseInt(jTextFieldID.getText()));
+        dados_historico.setDescricao(jTextFieldDescricao.getText());
+        try {
+            objcon.alteraRegistroJFDB("HISTORICOS", dados_historico.alteraDadosSQLValues(),
+                    "ID ='" + jTextFieldID.getText() + "'");
+            limparCampos();
+            dispose();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Não foi possível alterar. erro: " + erro.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,12 +384,14 @@ public class ViewHistorico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JLabel jLabelDescricao;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JTextField jTextFieldDescricao;
+    private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
 }
