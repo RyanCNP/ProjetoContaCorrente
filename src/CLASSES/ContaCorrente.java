@@ -83,4 +83,15 @@ public class ContaCorrente {
                 + this.getSaldo() + "'";
         return dadosContaCorrente;
     }
+
+    public String alteraDadosSQLValues() {
+        String dadosContaCorrente;
+        dadosContaCorrente = "NUM_AGE = '"
+                + this.getNum_age() + "', NUM_CC = '"
+                + this.getNum_cc() + "', ID_CLIENTE = '"
+                + this.getId_cli() + "', SALDO = '"
+                + this.getSaldo() + "'";
+
+        return dadosContaCorrente;
+    }
 }

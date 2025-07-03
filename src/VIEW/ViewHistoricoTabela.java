@@ -112,13 +112,13 @@ public class ViewHistoricoTabela extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             try {
                 HistoricoDAO objcon = new HistoricoDAO();
-                ResultSet historicos_registrados = objcon.consultarRegistroJFDB("CLIENTES");
+                ResultSet historicos_registrados = objcon.consultarRegistroJFDB("HISTORICOS");
 
                 // Usa o modelo geral não editável
                 jTableHistoricos.setModel(new UTIL.TableModelNaoEditavel(historicos_registrados));
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Erro ao carregar clientes: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Erro ao carregar historicos: " + e.getMessage());
             }
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed

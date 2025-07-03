@@ -50,7 +50,7 @@ public class ContaCorrenteDAO {
             stmt = con.createStatement();
 
             String sql = "INSERT INTO dbo." + tabela + " "
-                    + "VALUES (" + strDados + ")";
+                    + " VALUES (" + strDados + ")";
             JOptionPane.showMessageDialog(null, "String de Insert: " + sql);
 
             try {
@@ -73,7 +73,7 @@ public class ContaCorrenteDAO {
             Statement stmt;
             try {
                 stmt = con.createStatement();
-                String sql = "UPDATE dbo." + tabela + " SET " + strDados + " WHERE " + pesquisaId + ";";
+                String sql = "UPDATE dbo." + tabela + " SET " + strDados + " WHERE ID_CLIENTE = " + pesquisaId + ";";
                 try {
                     stmt.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Alteracao executada com sucesso!");
@@ -95,7 +95,7 @@ public class ContaCorrenteDAO {
         try {
             stmt = con.createStatement();
             String sql = "DELETE FROM dbp. " + tabela
-                    + "WHERE ID = " + pesquisaID;
+                    + "WHERE ID_CLIENTE = " + pesquisaID;
 
             JOptionPane.showMessageDialog(null, "STRING DE DELETE: " + sql);
 
@@ -122,7 +122,7 @@ public class ContaCorrenteDAO {
             try {
                 stmt = con.createStatement();
                 String sql = "SELECT * FROM dbo. " + tabela
-                        + "WHERE ID = " + pesquisaId;
+                        + "WHERE ID_CLIENTE = " + pesquisaId;
                 try {
                     ResultSet dados;
                     dados = stmt.executeQuery(sql);
@@ -130,23 +130,13 @@ public class ContaCorrenteDAO {
                         JOptionPane.showMessageDialog(null, "Nenhum registro foi"
                                 + " encontrado para essa pesquisa");
                     } else {
-                        clientesReturn.setId(dados.getInt("ID"));
-                        clientesReturn.setCPF(dados.getString("CPF"));
-                        clientesReturn.setNome(dados.getString("NOME"));
-                        clientesReturn.setEndereco(dados.getString("ENDERECO"));
-                        clientesReturn.setNumero(dados.getString("NUMEMERO"));
-                        clientesReturn.setComplemento(dados.getString("COMPLEMENTO"));
-                        clientesReturn.setBairro(dados.getString("BAIRO"));
-                        clientesReturn.setCidade(dados.getString("CIDADE"));
-                        clientesReturn.setUF(dados.getString("UF"));
-                        clientesReturn.setCEP(dados.getString("CEP"));
-                        clientesReturn.setTelefone(dados.getString("TELEFONE"));
-                        clientesReturn.setCNPJ(dados.getString("CNPJ"));
-                        clientesReturn.setEmail(dados.getString("EMAIL"));
-                        clientesReturn.setSexo(dados.getString("SEXO"));
+                        conta_correnteReturn.setId_cli(dados.getInt("ID_CLIENTE"));
+                        conta_correnteReturn.setNum_age(dados.getInt("NUM_AGE"));
+                        conta_correnteReturn.setNum_cc(dados.getLong("NUM_CC"));
+                        conta_correnteReturn.setSaldo(dados.getLong("SALDO"));
                     }
                     con.close();
-                    return clientesReturn;
+                    return conta_correnteReturn;
                 } catch (SQLException erro) {
                     JOptionPane.showMessageDialog(null, "Erro de conexão, ClienteDAO - Mensagem => " + erro.getMessage());
                     JOptionPane.showMessageDialog(null, "\n Erro de conexão, ClienteDAO - Estado => " + erro.getSQLState());
@@ -158,7 +148,7 @@ public class ContaCorrenteDAO {
         }
 
         //Inserir o "pesquisa" de cada metodo (tabela)
-        return clientesReturn;  //Retorno dos dados ou o erro
+        return conta_correnteReturn;  //Retorno dos dados ou o erro
     }
 
     public ResultSet consultarRegistroJFDB(String tabela) {

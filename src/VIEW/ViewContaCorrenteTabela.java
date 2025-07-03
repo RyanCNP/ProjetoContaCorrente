@@ -4,6 +4,12 @@
  */
 package VIEW;
 
+import CLASSES.ContaCorrente;
+import DAO.ContaCorrenteDAO;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author perei
@@ -18,6 +24,19 @@ public class ViewContaCorrenteTabela extends javax.swing.JFrame {
     public ViewContaCorrenteTabela() {
         initComponents();
     }
+    
+    String operacaoAtivaGlobal = "NENHUM";
+
+    public ViewContaCorrenteTabela(String operacaoAtiva) {
+        initComponents();
+        operacaoAtivaGlobal = operacaoAtiva;
+        String operacao = "CONSULTAR";
+        if (operacaoAtiva.equals(operacao)) {
+            jTableContaCorrente.setVisible(true);
+        }
+    }
+
+    ContaCorrente conta_corrente_tela = new ContaCorrente();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +47,81 @@ public class ViewContaCorrenteTabela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableContaCorrente = new javax.swing.JTable();
+        jButtonConsultar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableContaCorrente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "NUM_AGE", "NUM_CC", "ID_CLIENTE", "SALDO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Long.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableContaCorrente);
+
+        jButtonConsultar.setText("CONSULTAR REGISTROS");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // CONSULTAR TABELA
+        String operacao = "CONSULTAR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            try {
+                ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+                ResultSet contas_correntes_registradas = objcon.consultarRegistroJFDB("CONTACORRENTE");
+
+                // Usa o modelo geral não editável
+                jTableContaCorrente.setModel(new UTIL.TableModelNaoEditavel(contas_correntes_registradas));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar clientes: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +149,8 @@ public class ViewContaCorrenteTabela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableContaCorrente;
     // End of variables declaration//GEN-END:variables
 }

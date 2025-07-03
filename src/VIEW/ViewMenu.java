@@ -374,7 +374,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
     private void jMenuContaCorrenteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuContaCorrenteAlterarActionPerformed
         // Alterar Conta Corrente
-        String operacao = "PesquisaAlterar";
+        String operacao = "PesquisarAlterar";
         ViewContaCorrente tela = new ViewContaCorrente(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuContaCorrenteAlterarActionPerformed
@@ -389,7 +389,7 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenuContaCorrenteConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuContaCorrenteConsultarActionPerformed
         // Consultar Conta Corrente
         String operacao = "CONSULTAR";
-        ViewContaCorrente tela = new ViewContaCorrente(operacao);
+        ViewContaCorrenteTabela tela = new ViewContaCorrenteTabela(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuContaCorrenteConsultarActionPerformed
 

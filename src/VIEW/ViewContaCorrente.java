@@ -6,6 +6,8 @@ package VIEW;
 
 import CLASSES.ContaCorrente;
 import DAO.ClienteDAO;
+import DAO.ContaCorrenteDAO;
+import javax.swing.JOptionPane;
 
 /**
  * @author Ryan Carlo Negretti Pereira
@@ -17,26 +19,78 @@ public class ViewContaCorrente extends javax.swing.JFrame {
      */
     public ViewContaCorrente() {
         initComponents();
-}
-    String operacaoAtivaGlobal = "Nenhum";
-    public ViewContaCorrente (String operacaoAtiva){
+    }
+    String operacaoAtivaGlobal = "NENHUM";
+
+    private void camposOB() {
+        jLabelIdCliente.setVisible(true);
+        jTextFieldIdCliente.setVisible(true);
+    }
+
+    private void limparCampos() {
+        jLabelNumeroConta.setText(" ");
+        jLabelNumeroAgencia.setText(" ");
+        jLabelSaldo.setText(" ");
+        jTextFieldNumeroConta.setText(" ");
+        jTextFieldNumeroAgencia.setText(" ");
+        jTextFieldSaldo.setText(" ");
+    }
+
+    private void camposON() {
+        jLabelNumeroConta.setVisible(true);
+        jLabelNumeroAgencia.setVisible(true);
+        jLabelSaldo.setVisible(true);
+        jTextFieldNumeroConta.setVisible(true);
+        jTextFieldNumeroAgencia.setVisible(true);
+        jTextFieldSaldo.setVisible(true);
+    }
+
+    private void camposOFF() {
+        jLabelNumeroConta.setVisible(false);
+        jLabelNumeroAgencia.setVisible(false);
+        jLabelSaldo.setVisible(false);
+        jTextFieldNumeroConta.setVisible(false);
+        jTextFieldNumeroAgencia.setVisible(false);
+        jTextFieldSaldo.setVisible(false);
+    }
+
+    public ViewContaCorrente(String operacaoAtiva) {
         initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
-        String operacao = "Incluir";
-        
-        if (operacaoAtiva.equals(operacao)){
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
-            jTextField1.setVisible(true);
-            jTextField2.setVisible(true);
-            jTextField4.setVisible(true);
-            jTextField5.setVisible(true);
-            jButton1.setText("Incluir BD");         
+        String operacao = "INCLUIR";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposON();
+            jButtonCadastrar.setVisible(true);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(false);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarAlterar";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
         }
     }
-    ContaCorrente conta_tela=new ContaCorrente();
+
+    ContaCorrente conta_tela = new ContaCorrente();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,70 +100,86 @@ public class ViewContaCorrente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabelNumeroConta = new javax.swing.JLabel();
+        jTextFieldNumeroConta = new javax.swing.JTextField();
+        jTextFieldNumeroAgencia = new javax.swing.JTextField();
+        jLabelNumeroAgencia = new javax.swing.JLabel();
+        jTextFieldIdCliente = new javax.swing.JTextField();
+        jLabelIdCliente = new javax.swing.JLabel();
+        jTextFieldSaldo = new javax.swing.JTextField();
+        jLabelSaldo = new javax.swing.JLabel();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Número da Conta:");
+        jLabelNumeroConta.setText("NUMERO DA CONTA:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNumeroContaActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldNumeroAgenciaActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Número da Agência:");
+        jLabelNumeroAgencia.setText("NUMERO DA AGENCIA:");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIdCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldIdClienteActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("ID do Cliente:");
+        jLabelIdCliente.setText("ID DO CLIENTE:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jTextFieldSaldoActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Saldo:");
+        jLabelSaldo.setText("SALDO:");
 
-        jButton1.setText("Cadastar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
             }
         });
 
@@ -120,31 +190,34 @@ public class ViewContaCorrente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField2))))
-                        .addGap(0, 37, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabelSaldo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextFieldSaldo))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabelNumeroConta)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldNumeroConta, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelNumeroAgencia)
+                                .addComponent(jLabelIdCliente))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldIdCliente)
+                                .addComponent(jTextFieldNumeroAgencia))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCadastrar)
+                            .addComponent(jButtonAlterar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonExcluir)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonLimpar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonConsultar)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,85 +225,168 @@ public class ViewContaCorrente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroConta)
+                    .addComponent(jTextFieldNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroAgencia)
+                    .addComponent(jTextFieldNumeroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelIdCliente)
+                    .addComponent(jTextFieldIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                    .addComponent(jLabelSaldo)
+                    .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap())
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonExcluir))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//CADASTRAR DADOS
-        String operacao = "Incluir";
-        if (operacaoAtivaGlobal.equals(operacao)){
-        ContaCorrente dados_ContaCorrente = new ContaCorrente();
-        dados_ContaCorrente.setNumConta(jTextField1.getText());
-        dados_ContaCorrente.setNumAgencia(jTextField2.getText());
-        dados_ContaCorrente.setIdCli(jTextField4.getText());
-        dados_ContaCorrente.setSaldo(jTextField5.getText());
-        
-        ClienteDAO objcon = new ClienteDAO();
-        
-        objcon.insereRegistroJFBD("CONTACORRENTE", dados_ContaCorrente.dadosSQLValues());
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        //CADASTRAR DADOS
+        String operacao = "INCLUIR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            ContaCorrente dados_conta_corrente = new ContaCorrente();
+            dados_conta_corrente.setNum_cc(Long.parseLong(jTextFieldNumeroConta.getText()));
+            dados_conta_corrente.setNum_age(Integer.parseInt(jTextFieldNumeroAgencia.getText()));
+            dados_conta_corrente.setId_cli(Integer.parseInt(jTextFieldIdCliente.getText()));
+            dados_conta_corrente.setSaldo(Double.parseDouble(jTextFieldSaldo.getText()));
+
+            ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+
+            objcon.insereRegistroJFBD("CONTACORRENTE", dados_conta_corrente.dadosSQLValues());
+
+            limparCampos();
+            dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNumeroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroContaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNumeroAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroAgenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroAgenciaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldIdClienteActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        //CADASTRAR
-        
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    private void jTextFieldSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSaldoActionPerformed
+        // TODO add your handling code here:
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jTextFieldSaldoActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         //LIMPAR CAMPOS
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //CONSULTAR CAMPOS
-        jTextField1.setText(conta_tela.getNumConta());
-        jTextField2.setText(conta_tela.getNumAgencia());
-        jTextField4.setText(conta_tela.getIdCli());
-        jTextField5.setText(conta_tela.getSaldo());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        //BUSCAR DADOS
+        String operacao = "PesquisarAlterar";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+            ContaCorrente dados_conta_corrente;
+            dados_conta_corrente = objcon.pesquisaRegistroJFDB("CONTACORRENTE", "ID_CLIENTE = '"
+                    + jTextFieldIdCliente.getText() + "'");
+
+            if (dados_conta_corrente != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroConta.setText(String.valueOf(dados_conta_corrente.getNum_cc()));
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_conta_corrente.getNum_age()));
+                jTextFieldIdCliente.setText(String.valueOf(dados_conta_corrente.getId_cli()));
+                jTextFieldSaldo.setText(String.valueOf(dados_conta_corrente.getSaldo()));
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(false);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Conta Corrente não encontrado.");
+            }
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+            ContaCorrente dados_conta_corrente;
+            dados_conta_corrente = objcon.pesquisaRegistroJFDB("CONTACORRENTE", "ID_CLIENTE = '"
+                    + jTextFieldIdCliente.getText() + "'");
+
+            if (dados_conta_corrente != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroConta.setText(String.valueOf(dados_conta_corrente.getNum_cc()));
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_conta_corrente.getNum_age()));
+                jTextFieldIdCliente.setText(String.valueOf(dados_conta_corrente.getId_cli()));
+                jTextFieldSaldo.setText(String.valueOf(dados_conta_corrente.getSaldo()));
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(true);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Conta Corrente não encontrado.");
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        //ALTERAR
+        ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+        ContaCorrente dados_conta_corrente;
+        dados_conta_corrente = objcon.pesquisaRegistroJFDB("CONTACORRENTE", "ID_CLIENTE = '"
+                + jTextFieldIdCliente.getText() + "'");
+
+        dados_conta_corrente.setNum_cc(Long.parseLong(jTextFieldNumeroConta.getText()));
+        dados_conta_corrente.setNum_age(Integer.parseInt(jTextFieldNumeroAgencia.getText()));
+        dados_conta_corrente.setId_cli(Integer.parseInt(jTextFieldIdCliente.getText()));
+        dados_conta_corrente.setSaldo(Double.parseDouble(jTextFieldSaldo.getText()));
+
+        try {
+            objcon.alteraRegistroJFDB("CONTACORRENTE", dados_conta_corrente.alteraDadosSQLValues(),
+                    "ID_CLIENTE ='" + jTextFieldIdCliente.getText() + "'");
+            limparCampos();
+            dispose();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Não foi possível alterar. erro: " + erro.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        //EXCLUIR
+        ContaCorrenteDAO objcon = new ContaCorrenteDAO();
+        ContaCorrente dados_conta_corrente;
+        dados_conta_corrente = objcon.pesquisaRegistroJFDB("CONTACORRENTE", "ID_CLIENTE = '"
+                + jTextFieldIdCliente.getText() + "'");
+
+        jTextFieldNumeroConta.setText(String.valueOf(dados_conta_corrente.getNum_cc()));
+        jTextFieldNumeroAgencia.setText(String.valueOf(dados_conta_corrente.getNum_age()));
+        jTextFieldIdCliente.setText(String.valueOf(dados_conta_corrente.getId_cli()));
+        jTextFieldSaldo.setText(String.valueOf(dados_conta_corrente.getSaldo()));
+
+        objcon.excluirRegistroJFDB("CONTACORRENTE", "ID_CLIENTE = '"
+                + jTextFieldIdCliente.getText() + "'");
+
+        limparCampos();
+        dispose();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,16 +455,18 @@ public class ViewContaCorrente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JLabel jLabelIdCliente;
+    private javax.swing.JLabel jLabelNumeroAgencia;
+    private javax.swing.JLabel jLabelNumeroConta;
+    private javax.swing.JLabel jLabelSaldo;
+    private javax.swing.JTextField jTextFieldIdCliente;
+    private javax.swing.JTextField jTextFieldNumeroAgencia;
+    private javax.swing.JTextField jTextFieldNumeroConta;
+    private javax.swing.JTextField jTextFieldSaldo;
     // End of variables declaration//GEN-END:variables
 }
