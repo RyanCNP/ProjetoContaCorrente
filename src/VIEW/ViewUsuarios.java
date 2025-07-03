@@ -19,6 +19,11 @@ public class ViewUsuarios extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "NENHUM";
 
+    private void camposOB() {
+        jLabelID.setVisible(true);
+        jTextFieldID.setVisible(true);
+    }
+
     private void limparCampos() {
         jTextFieldID.setText(" ");
         jTextFieldSenha.setText(" ");
@@ -49,8 +54,7 @@ public class ViewUsuarios extends javax.swing.JFrame {
         operacaoAtivaGlobal = operacaoAtiva;
         String operacao = "INCLUIR";
         if (operacaoAtiva.equals(operacao)) {
-            jLabelID.setVisible(true);
-            jTextFieldID.setVisible(true);
+            camposOB();
             camposON();
             jButtonCadastrar.setVisible(true);
             jButtonLimpar.setVisible(true);
@@ -58,10 +62,9 @@ public class ViewUsuarios extends javax.swing.JFrame {
             jButtonAlterar.setVisible(false);
             jButtonExcluir.setVisible(false);
         }
-        operacao = "PesquisaAlterar";
+        operacao = "PesquisarAlterar";
         if (operacaoAtiva.equals(operacao)) {
-            jLabelID.setVisible(true);
-            jTextFieldID.setVisible(true);
+            camposOB();
             camposOFF();
             jButtonCadastrar.setVisible(false);
             jButtonLimpar.setVisible(true);
@@ -69,10 +72,9 @@ public class ViewUsuarios extends javax.swing.JFrame {
             jButtonAlterar.setVisible(false);
             jButtonExcluir.setVisible(false);
         }
-        operacao = "PesquisaExcluir";
+        operacao = "PesquisarExcluir";
         if (operacaoAtiva.equals(operacao)) {
-            jLabelID.setVisible(true);
-            jTextFieldID.setVisible(true);
+            camposOB();
             camposOFF();
             jButtonCadastrar.setVisible(false);
             jButtonLimpar.setVisible(true);
