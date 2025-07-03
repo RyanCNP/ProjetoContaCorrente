@@ -1,0 +1,61 @@
+USE CONTA_CORRENTE
+
+-- Dados para AGENCIAS
+INSERT INTO AGENCIAS VALUES (10001, 'Agência Central', 'Rua das Flores', '123', 'Sala 1', 'Centro', 'São Paulo', 'SP', '01001000', '(11)99999-0001');
+INSERT INTO AGENCIAS VALUES (10002, 'Agência Sul', 'Av. Brasil', '456', 'Térreo', 'Jardins', 'São Paulo', 'SP', '01402000', '(11)99999-0002');
+INSERT INTO AGENCIAS VALUES (10003, 'Agência Norte', 'Rua das Palmeiras', '789', 'Sala 3', 'Pinheiros', 'São Paulo', 'SP', '05422000', '(11)99999-0003');
+INSERT INTO AGENCIAS VALUES (10004, 'Agência Oeste', 'Av. Paulista', '101', 'Conj. 4', 'Bela Vista', 'São Paulo', 'SP', '01310000', '(11)99999-0004');
+INSERT INTO AGENCIAS VALUES (10005, 'Agência Leste', 'Rua Augusta', '202', 'Ap. 5', 'Consolação', 'São Paulo', 'SP', '01304000', '(11)99999-0005');
+INSERT INTO AGENCIAS VALUES (10006, 'Agência Campinas', 'Rua Barão', '303', 'Sala 6', 'Centro', 'Campinas', 'SP', '13010100', '(19)99999-0006');
+INSERT INTO AGENCIAS VALUES (10007, 'Agência Ribeirão', 'Av. Independência', '404', 'Loja 7', 'Centro', 'Ribeirão Preto', 'SP', '14010010', '(16)99999-0007');
+INSERT INTO AGENCIAS VALUES (10008, 'Agência Santos', 'Rua do Porto', '505', 'Andar 8', 'Ponta da Praia', 'Santos', 'SP', '11030000', '(13)99999-0008');
+
+-- Dados para CLIENTES
+INSERT INTO CLIENTES VALUES (1, 'João da Silva', 'Rua A', '10', '', 'Centro', 'São Paulo', 'SP', '01001000', '(11)98888-1111', '11111111111', '1980-01-01', '00000000000100', 'joao@email.com', 'M');
+INSERT INTO CLIENTES VALUES (2, 'Maria Oliveira', 'Rua B', '20', 'Casa', 'Vila Mariana', 'São Paulo', 'SP', '04101000', '(11)97777-2222', '22222222222', '1985-05-15', '00000000000200', 'maria@email.com', 'F');
+INSERT INTO CLIENTES VALUES (3, 'Carlos Souza', 'Rua C', '30', '', 'Jardins', 'São Paulo', 'SP', '01402000', '(11)96666-3333', '33333333333', '1990-03-10', '00000000000300', 'carlos@email.com', 'M');
+INSERT INTO CLIENTES VALUES (4, 'Ana Paula', 'Rua D', '40', 'Ap. 101', 'Pinheiros', 'São Paulo', 'SP', '05422000', '(11)95555-4444', '44444444444', '1992-07-20', '00000000000400', 'ana@email.com', 'F');
+INSERT INTO CLIENTES VALUES (5, 'Luiz Fernando', 'Rua E', '50', '', 'Centro', 'Campinas', 'SP', '13010100', '(19)94444-5555', '55555555555', '1988-11-30', '00000000000500', 'luiz@email.com', 'M');
+INSERT INTO CLIENTES VALUES (6, 'Patrícia Lima', 'Rua F', '60', 'Casa 2', 'Taquaral', 'Campinas', 'SP', '13020000', '(19)93333-6666', '66666666666', '1995-09-09', '00000000000600', 'patricia@email.com', 'F');
+INSERT INTO CLIENTES VALUES (7, 'Marcos Reis', 'Rua G', '70', '', 'Centro', 'Ribeirão Preto', 'SP', '14010010', '(16)92222-7777', '77777777777', '1975-04-25', '00000000000700', 'marcos@email.com', 'M');
+INSERT INTO CLIENTES VALUES (8, 'Juliana Freitas', 'Rua H', '80', 'Fundos', 'Ponta da Praia', 'Santos', 'SP', '11030000', '(13)91111-8888', '88888888888', '1983-12-12', '00000000000800', 'juliana@email.com', 'F');
+
+-- Dados para HISTORICOS
+INSERT INTO HISTORICOS VALUES (1, 'Depósito em conta corrente');
+INSERT INTO HISTORICOS VALUES (2, 'Saque em dinheiro');
+INSERT INTO HISTORICOS VALUES (3, 'Transferência entre contas');
+INSERT INTO HISTORICOS VALUES (4, 'Pagamento de boleto');
+INSERT INTO HISTORICOS VALUES (5, 'Recebimento de salário');
+INSERT INTO HISTORICOS VALUES (6, 'Pagamento de cartão de crédito');
+INSERT INTO HISTORICOS VALUES (7, 'Compra via débito');
+INSERT INTO HISTORICOS VALUES (8, 'Estorno de operação');
+
+-- Dados para CONTACORRENTE
+INSERT INTO CONTACORRENTE VALUES (10001, 1234567890, 1, 5000.00);
+INSERT INTO CONTACORRENTE VALUES (10002, 1234567891, 2, 3200.00);
+INSERT INTO CONTACORRENTE VALUES (10003, 1234567892, 3, 850.50);
+INSERT INTO CONTACORRENTE VALUES (10004, 1234567893, 4, 12990.00);
+INSERT INTO CONTACORRENTE VALUES (10005, 1234567894, 5, 760.75);
+INSERT INTO CONTACORRENTE VALUES (10006, 1234567895, 6, 2280.00);
+INSERT INTO CONTACORRENTE VALUES (10007, 1234567896, 7, 11500.30);
+INSERT INTO CONTACORRENTE VALUES (10008, 1234567897, 8, 905.20);
+
+-- Dados para USUARIOS
+INSERT INTO USUARIOS VALUES ('joaos', 'senha123', 10001, 1234567890);
+INSERT INTO USUARIOS VALUES ('mariao', 'senha456', 10002, 1234567891);
+INSERT INTO USUARIOS VALUES ('carloss', 'senha789', 10003, 1234567892);
+INSERT INTO USUARIOS VALUES ('anapa', 'senha321', 10004, 1234567893);
+INSERT INTO USUARIOS VALUES ('luizf', 'senha654', 10005, 1234567894);
+INSERT INTO USUARIOS VALUES ('patril', 'senha987', 10006, 1234567895);
+INSERT INTO USUARIOS VALUES ('marcosr', 'senha147', 10007, 1234567896);
+INSERT INTO USUARIOS VALUES ('julianaf', 'senha258', 10008, 1234567897);
+
+-- Dados para MOVIMENTACAO
+INSERT INTO MOVIMENTACAO VALUES (10001, 1234567890, '2025-07-01', 'D0001', 'C', 1, 'Depósito em espécie', 1000.00, 6000.00);
+INSERT INTO MOVIMENTACAO VALUES (10002, 1234567891, '2025-07-01', 'D0002', 'D', 2, 'Saque em caixa eletrônico', 200.00, 3000.00);
+INSERT INTO MOVIMENTACAO VALUES (10003, 1234567892, '2025-07-01', 'D0003', 'D', 4, 'Pagamento de boleto de luz', 120.50, 730.00);
+INSERT INTO MOVIMENTACAO VALUES (10004, 1234567893, '2025-07-01', 'D0004', 'C', 5, 'Recebimento de salário', 3500.00, 16490.00);
+INSERT INTO MOVIMENTACAO VALUES (10005, 1234567894, '2025-07-01', 'D0005', 'D', 6, 'Pagamento de cartão', 500.75, 260.00);
+INSERT INTO MOVIMENTACAO VALUES (10006, 1234567895, '2025-07-01', 'D0006', 'C', 1, 'Depósito via app', 500.00, 2780.00);
+INSERT INTO MOVIMENTACAO VALUES (10007, 1234567896, '2025-07-01', 'D0007', 'D', 3, 'Transferência para outra conta', 3000.00, 8500.30);
+INSERT INTO MOVIMENTACAO VALUES (10008, 1234567897, '2025-07-01', 'D0008', 'D', 7, 'Compra em padaria', 105.20, 800.00);
