@@ -264,7 +264,7 @@ public class ViewUsuarios extends javax.swing.JFrame {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // CONSULTAR
-        String operacao = "PesquisaAlterar";
+        String operacao = "PesquisarAlterar";
         if (operacaoAtivaGlobal.equals((operacao))) {
             UsuarioDAO objcon = new UsuarioDAO();
             Usuario dados_usuario;
@@ -275,8 +275,8 @@ public class ViewUsuarios extends javax.swing.JFrame {
                 // Preencher os campos da tela com os dados do cliente
                 jTextFieldID.setText(String.valueOf(dados_usuario.getId()));
                 jTextFieldSenha.setText(dados_usuario.getSenha());
-                jTextFieldNumAg.setText(dados_usuario.getNum_age());
-                jTextFieldNumCc.setText(dados_usuario.getNum_cc());
+                jTextFieldNumAg.setText(String.valueOf(dados_usuario.getNum_age()));
+                jTextFieldNumCc.setText(String.valueOf(dados_usuario.getNum_cc()));
 
                 camposON();
                 jButtonCadastrar.setVisible(false);
@@ -288,7 +288,7 @@ public class ViewUsuarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado.");
             }
         }
-        operacao = "PesquisaExcluir";
+        operacao = "PesquisarExcluir";
         if (operacaoAtivaGlobal.equals((operacao))) {
             UsuarioDAO objcon = new UsuarioDAO();
             Usuario dados_usuario;
@@ -299,8 +299,8 @@ public class ViewUsuarios extends javax.swing.JFrame {
                 // Preencher os campos da tela com os dados do cliente
                 jTextFieldID.setText(String.valueOf(dados_usuario.getId()));
                 jTextFieldSenha.setText(dados_usuario.getSenha());
-                jTextFieldNumAg.setText(dados_usuario.getNumAg());
-                jTextFieldNumCc.setText(dados_usuario.getNumCc());
+                jTextFieldNumAg.setText(String.valueOf(dados_usuario.getNum_age()));
+                jTextFieldNumCc.setText(String.valueOf(dados_usuario.getNum_cc()));
 
                 camposON();
                 jButtonCadastrar.setVisible(false);
@@ -324,10 +324,10 @@ public class ViewUsuarios extends javax.swing.JFrame {
         String operacao = "INCLUIR";
         if (operacaoAtivaGlobal.equals(operacao)) {
             Usuario dados_usuario = new Usuario();
-            dados_usuario.setId(Integer.parseInt(jTextFieldID.getText()));
+            dados_usuario.setId(jTextFieldID.getText());
             dados_usuario.setSenha(jTextFieldSenha.getText());
-            dados_usuario.setNumAg(jTextFieldNumAg.getText());
-            dados_usuario.setNumAg(jTextFieldNumAg.getText());
+            dados_usuario.setNum_age(Integer.parseInt(jTextFieldNumAg.getText()));
+            dados_usuario.setNum_cc(Long.parseLong(jTextFieldNumAg.getText()));
 
             UsuarioDAO objcon = new UsuarioDAO();
 
@@ -350,11 +350,11 @@ public class ViewUsuarios extends javax.swing.JFrame {
 
         jTextFieldID.setText(String.valueOf(dados_usuario.getId()));
         jTextFieldSenha.setText(dados_usuario.getSenha());
-        jTextFieldNumAg.setText(dados_usuario.getNumAg());
-        jTextFieldNumCc.setText(dados_usuario.getNumCc());
+        jTextFieldNumAg.setText(String.valueOf(dados_usuario.getNum_age()));
+        jTextFieldNumCc.setText(String.valueOf(dados_usuario.getNum_cc()));
 
-        objcon.excluiRegistroJFDB("USUARIOS", "ID ='"
-                + jTextFieldID.getText() + "'", jTextFieldID.getText());
+        objcon.excluirRegistroJFDB("USUARIOS", "ID ='"
+                + jTextFieldID.getText() + "'");
 
         limparCampos();
         dispose();
@@ -364,13 +364,13 @@ public class ViewUsuarios extends javax.swing.JFrame {
         // ALTERAR
         UsuarioDAO objcon = new UsuarioDAO();
         Usuario dados_usuario;
-        dados_usuario = objcon.pesquisaRegistroJFDB("CLIENTES", "ID ='"
+        dados_usuario = objcon.pesquisaRegistroJFDB("USUARIOS", "ID ='"
                 + jTextFieldID.getText() + "'");
 
-        dados_usuario.setId(Integer.parseInt(jTextFieldID.getText()));
+        dados_usuario.setId(jTextFieldID.getText());
         dados_usuario.setSenha(jTextFieldSenha.getText());
-        dados_usuario.setNumAg(jTextFieldNumAg.getText());
-        dados_usuario.setNumCc(jTextFieldNumCc.getText());
+        dados_usuario.setNum_age(Integer.parseInt(jTextFieldNumAg.getText()));
+        dados_usuario.setNum_cc(Long.parseLong(jTextFieldNumCc.getText()));
 
         try {
             objcon.alteraRegistroJFDB("USUARIOS", dados_usuario.alteraDadosSQLValues(),

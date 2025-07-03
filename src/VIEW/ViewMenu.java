@@ -438,20 +438,20 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenuUsuariosConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosConsultarActionPerformed
         // Consultar Usuario
         String operacao = "CONSULTAR";
-        ViewUsuarios tela = new ViewUsuarios(operacao);
+        ViewUsuariosTabela tela = new ViewUsuariosTabela(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuUsuariosConsultarActionPerformed
 
     private void jMenuUsuariosAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosAlterarActionPerformed
         // Alterar Usuario
-        String operacao = "PesquisaAlterar";
+        String operacao = "PesquisarAlterar";
         ViewUsuarios tela = new ViewUsuarios(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuUsuariosAlterarActionPerformed
 
     private void jMenuUsuariosExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosExcluirActionPerformed
         // Excluir Usuario
-        String operacao = "PesquisaExcluir";
+        String operacao = "PesquisarExcluir";
         ViewUsuarios tela = new ViewUsuarios(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuUsuariosExcluirActionPerformed

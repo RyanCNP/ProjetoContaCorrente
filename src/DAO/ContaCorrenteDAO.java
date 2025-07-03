@@ -4,15 +4,12 @@
  */
 package DAO;
 
-import java.util.List;
 import CLASSES.ContaCorrente;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -101,7 +98,7 @@ public class ContaCorrenteDAO {
 
             try {
                 stmt.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "CLIENTE DELETADO COM SUCESSO!");
+                JOptionPane.showMessageDialog(null, "CONTA CORRENTE DELETADO COM SUCESSO!");
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
                 JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());

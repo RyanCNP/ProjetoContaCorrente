@@ -11,8 +11,7 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
- *
- * @author perei
+ * @author Ryan Carlo Negretti Pereira
  */
 public class ViewHistoricoTabela extends javax.swing.JFrame {
     
