@@ -30,7 +30,6 @@ CREATE TABLE CLIENTES (
     CEP         CHAR(8)     NOT NULL,
     TELEFONE    VARCHAR(15) NOT NULL,
     CPF         CHAR(11)    NOT NULL,
-    DATA_NASC   DATETIME    NOT NULL,
     CNPJ        CHAR(14)    NOT NULL,
     EMAIL       VARCHAR(30) NOT NULL,
     SEXO        CHAR(2)     NOT NULL
