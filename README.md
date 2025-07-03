@@ -1,4 +1,4 @@
-# ProjetoContaCorrente
+# Projeto Conta Corrente
 Projeto desenvolvido durante as aulas de Técnicas de Programação I e II
 
 Para que este projeto funcione, serão necessárias as seguintes bibliotecas:  
