@@ -7,6 +7,7 @@ package VIEW;
 import CLASSES.Cliente;
 import DAO.ClienteDAO;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -110,11 +111,16 @@ public class ViewClientesTabela extends javax.swing.JFrame {
         // CONSULTAR TABELA
         String operacao = "CONSULTAR";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            ClienteDAO objcon = new ClienteDAO();
+            try {
+                ClienteDAO objcon = new ClienteDAO();
+                ResultSet clientes_registrados = objcon.consultarRegistroJFDB("CLIENTES");
 
-            ResultSet clientes_registrados;
-            clientes_registrados = objcon.consultarRegistroJFDB("CLIENTES");
-            jTableClientes.setModel(DbUtils.resultSetToTableModel(clientes_registrados));
+                // Usa o modelo geral não editável
+                jTableClientes.setModel(new UTIL.TableModelNaoEditavel(clientes_registrados));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar clientes: " + e.getMessage());
+            }
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 

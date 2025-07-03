@@ -7,6 +7,7 @@ package VIEW;
 import CLASSES.Historico;
 import DAO.HistoricoDAO;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -109,11 +110,16 @@ public class ViewHistoricoTabela extends javax.swing.JFrame {
         // CONSULTAR TABELA
         String operacao = "CONSULTAR";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            HistoricoDAO objcon = new HistoricoDAO();
+            try {
+                HistoricoDAO objcon = new HistoricoDAO();
+                ResultSet historicos_registrados = objcon.consultarRegistroJFDB("CLIENTES");
 
-            ResultSet historicos_registrados;
-            historicos_registrados = objcon.consultarRegistroJFDB("HISTORICOS");
-            jTableHistoricos.setModel(DbUtils.resultSetToTableModel(historicos_registrados));
+                // Usa o modelo geral não editável
+                jTableHistoricos.setModel(new UTIL.TableModelNaoEditavel(historicos_registrados));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar clientes: " + e.getMessage());
+            }
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
