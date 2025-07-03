@@ -458,14 +458,14 @@ public class ViewMenu extends javax.swing.JFrame {
 
     private void jMenuExtratoMovimentacaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExtratoMovimentacaoAlterarActionPerformed
         // Alterar Extrato Movimentacao
-        String operacao = "PesquisaAlterar";
+        String operacao = "PesquisarAlterar";
         ViewExtratoMovimentacao tela= new ViewExtratoMovimentacao(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuExtratoMovimentacaoAlterarActionPerformed
 
     private void jMenuExtratoMovimentacaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExtratoMovimentacaoExcluirActionPerformed
         // Excluir Extrato Movimentacao
-        String operacao = "PesquisaExcluir";
+        String operacao = "PesquisarExcluir";
         ViewExtratoMovimentacao tela = new ViewExtratoMovimentacao(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuExtratoMovimentacaoExcluirActionPerformed
@@ -473,7 +473,7 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenuExtratoMovimentacaoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExtratoMovimentacaoConsultarActionPerformed
         // Consultar Extrato Movimentacao
         String operacao = "CONSULTAR";
-        ViewExtratoMovimentacao tela = new ViewExtratoMovimentacao(operacao);
+        ViewExtratoMovimentacaoTabela tela = new ViewExtratoMovimentacaoTabela(operacao);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuExtratoMovimentacaoConsultarActionPerformed
 

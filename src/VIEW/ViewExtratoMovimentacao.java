@@ -5,47 +5,120 @@
 package VIEW;
 
 import CLASSES.ExtratoMovimentacao;
-import DAO.ClienteDAO;
+import DAO.ExtratoMovimentacaoDAO;
+import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  * @author Ryan Carlo Negretti Pereira
  */
 public class ViewExtratoMovimentacao extends javax.swing.JFrame {
- 
+
     /**
      * Creates new form ExtratoMovimentacao
      */
     public ViewExtratoMovimentacao() {
         initComponents();
     }
-        String operacaoAtivaGlobal = "Nenhum";
-    public ViewExtratoMovimentacao (String operacaoAtiva){
+
+    String operacaoAtivaGlobal = "NENHUM";
+
+    private void camposOB() {
+        jLabelNumeroDocumento.setVisible(true);
+        jTextFieldNumeroDocumento.setVisible(true);
+    }
+
+    private void limparCampos() {
+        jTextFieldNumeroConta.setText(" ");
+        jTextFieldNumeroAgencia.setText(" ");
+        jTextFieldNumeroDocumento.setText(" ");
+        jTextFieldDataMovimentacao.setText(" ");
+        jTextFieldIdHistorico.setText(" ");
+        jTextFieldComplementoHistorico.setText(" ");
+        jTextFieldValor.setText(" ");
+        jTextFieldSaldo.setText(" ");
+
+        jComboBoxCartaoDC.setSelectedIndex(0);
+    }
+
+    private void camposON() {
+        jLabelNumeroConta.setVisible(true);
+        jLabelNumeroAgencia.setVisible(true);
+        jLabelDataMovimentacao.setVisible(true);
+        jLabelCartaoDC.setVisible(true);
+        jLabelIdHistorico.setVisible(true);
+        jLabelComplementoHistorico.setVisible(true);
+        jLabelValor.setVisible(true);
+        jLabelSaldo.setVisible(true);
+
+        jTextFieldNumeroConta.setVisible(true);
+        jTextFieldNumeroAgencia.setVisible(true);
+        jTextFieldDataMovimentacao.setVisible(true);
+        jTextFieldIdHistorico.setVisible(true);
+        jTextFieldComplementoHistorico.setVisible(true);
+        jTextFieldValor.setVisible(true);
+        jTextFieldSaldo.setVisible(true);
+
+        jComboBoxCartaoDC.setVisible(true);
+    }
+
+    private void camposOFF() {
+        jLabelNumeroConta.setVisible(false);
+        jLabelNumeroAgencia.setVisible(false);
+        jLabelDataMovimentacao.setVisible(false);
+        jLabelCartaoDC.setVisible(false);
+        jLabelIdHistorico.setVisible(false);
+        jLabelComplementoHistorico.setVisible(false);
+        jLabelValor.setVisible(false);
+        jLabelSaldo.setVisible(false);
+
+        jTextFieldNumeroConta.setVisible(false);
+        jTextFieldNumeroAgencia.setVisible(false);
+        jTextFieldDataMovimentacao.setVisible(false);
+        jTextFieldIdHistorico.setVisible(false);
+        jTextFieldComplementoHistorico.setVisible(false);
+        jTextFieldValor.setVisible(false);
+        jTextFieldSaldo.setVisible(false);
+
+        jComboBoxCartaoDC.setVisible(false);
+    }
+
+    public ViewExtratoMovimentacao(String operacaoAtiva) {
         initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
-        String operacao = "Incluir";
-        if (operacaoAtiva.equals(operacao)){
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
-            jLabel6.setVisible(true);
-            jLabel7.setVisible(true);
-            jLabel8.setVisible(true);
-            jLabel9.setVisible(true);
-            jTextField1.setVisible(true);
-            jTextField2.setVisible(true);
-            jTextField3.setVisible(true);
-            jTextField4.setVisible(true);
-            jTextField5.setVisible(true);
-            jTextField6.setVisible(true);
-            jTextField7.setVisible(true);
-            jTextField8.setVisible(true);
-            jTextField9.setVisible(true);   
-            jButton1.setText("Incluir BD");         
+        String operacao = "INCLUIR";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposON();
+            jButtonCadastrar.setVisible(true);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(false);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarAlterar";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtiva.equals(operacao)) {
+            camposOB();
+            camposOFF();
+            jButtonCadastrar.setVisible(false);
+            jButtonLimpar.setVisible(true);
+            jButtonExcluir.setVisible(false);
+            jButtonConsultar.setVisible(true);
+            jButtonAlterar.setVisible(false);
         }
     }
-    ExtratoMovimentacao extrato_tela = new ExtratoMovimentacao();
+
+    ExtratoMovimentacao extrato_movimentacao_tela = new ExtratoMovimentacao();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,120 +129,132 @@ public class ViewExtratoMovimentacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jLabelNumeroConta = new javax.swing.JLabel();
+        jTextFieldNumeroConta = new javax.swing.JTextField();
+        jLabelNumeroAgencia = new javax.swing.JLabel();
+        jLabelNumeroDocumento = new javax.swing.JLabel();
+        jTextFieldNumeroAgencia = new javax.swing.JTextField();
+        jTextFieldNumeroDocumento = new javax.swing.JTextField();
+        jTextFieldDataMovimentacao = new javax.swing.JTextField();
+        jLabelDataMovimentacao = new javax.swing.JLabel();
+        jLabelCartaoDC = new javax.swing.JLabel();
+        jTextFieldIdHistorico = new javax.swing.JTextField();
+        jLabelIdHistorico = new javax.swing.JLabel();
+        jTextFieldValor = new javax.swing.JTextField();
+        jLabelValor = new javax.swing.JLabel();
+        jTextFieldSaldo = new javax.swing.JTextField();
+        jLabelSaldo = new javax.swing.JLabel();
+        jLabelComplementoHistorico = new javax.swing.JLabel();
+        jTextFieldComplementoHistorico = new javax.swing.JTextField();
+        jComboBoxCartaoDC = new javax.swing.JComboBox<>();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Número da Conta:");
+        jLabelNumeroConta.setText("NUMERO DA CONTA:");
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jTextFieldNumeroContaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabelNumeroAgencia.setText("NUMERO DA AGENCIA:");
+
+        jLabelNumeroDocumento.setText("NUMERO DO DOCUMENTO:");
+
+        jTextFieldNumeroAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jTextFieldNumeroAgenciaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jTextFieldNumeroDocumentoActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDataMovimentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldDataMovimentacaoActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Número da Agência:");
+        jLabelDataMovimentacao.setText("DATA MOVIMENTAÇÃO:");
 
-        jLabel3.setText("Documento:");
+        jLabelCartaoDC.setText("CARTAO D / C:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIdHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldIdHistoricoActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jLabelIdHistorico.setText("ID DO HISTORICO:");
+
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldValorActionPerformed(evt);
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jLabelValor.setText("VALOR:");
+
+        jTextFieldSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldSaldoActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Data de Movimentação:");
+        jLabelSaldo.setText("SALDO:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jLabelComplementoHistorico.setText("COMPLEMENTO DO HISTORICO:");
+
+        jTextFieldComplementoHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jTextFieldComplementoHistoricoActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Cartão C/D:");
+        jComboBoxCartaoDC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecionar -", "D", "C" }));
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("ID do Hist.:");
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Valor:");
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Saldo:");
-
-        jLabel9.setText("Compl. Hist.");
-
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
             }
         });
 
@@ -181,193 +266,299 @@ public class ViewExtratoMovimentacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 169, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(jLabelDataMovimentacao)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(jLabelCartaoDC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField9)))
+                                .addComponent(jComboBoxCartaoDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
+                                        .addComponent(jLabelValor)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
+                                        .addComponent(jLabelSaldo)
                                         .addGap(3, 3, 3)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                    .addComponent(jTextField7))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldValor)
+                                    .addComponent(jTextFieldSaldo)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(136, 136, 136)
+                                .addComponent(jTextFieldDataMovimentacao)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelComplementoHistorico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldComplementoHistorico)
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNumeroAgencia)
+                            .addComponent(jLabelNumeroConta))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNumeroConta)
+                            .addComponent(jTextFieldNumeroAgencia))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNumeroDocumento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNumeroDocumento)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelIdHistorico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIdHistorico)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCadastrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAlterar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroConta)
+                    .addComponent(jTextFieldNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroAgencia)
+                    .addComponent(jTextFieldNumeroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNumeroDocumento)
+                    .addComponent(jTextFieldNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDataMovimentacao)
+                    .addComponent(jTextFieldDataMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCartaoDC)
+                    .addComponent(jComboBoxCartaoDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelIdHistorico)
+                    .addComponent(jTextFieldIdHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelComplementoHistorico)
+                    .addComponent(jTextFieldComplementoHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelValor)
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabelSaldo)
+                    .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(12, 12, 12))
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonAlterar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNumeroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroContaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNumeroAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroAgenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroAgenciaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldNumeroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroDocumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroDocumentoActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldDataMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataMovimentacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldDataMovimentacaoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jTextFieldIdHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdHistoricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jTextFieldIdHistoricoActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jTextFieldSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSaldoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jTextFieldSaldoActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void jTextFieldComplementoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldComplementoHistoricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jTextFieldComplementoHistoricoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // CADASTRAR
-        String operacao = "Incluir";
-        if (operacaoAtivaGlobal.equals(operacao)){
-        ExtratoMovimentacao dados_Extrato = new ExtratoMovimentacao();
-        dados_Extrato.setNumConta(jTextField1.getText());
-        dados_Extrato.setNumAgencia(jTextField2.getText());
-        dados_Extrato.setDocumento(jTextField3.getText());
-        dados_Extrato.setDataMovimentacao(jTextField4.getText());
-        dados_Extrato.setCreditoOuDebito(jTextField5.getText());
-        dados_Extrato.setIdHis(jTextField6.getText());
-        dados_Extrato.setValor(jTextField7.getText());
-        dados_Extrato.setSaldo(jTextField8.getText());
-        dados_Extrato.setCompl_his(jTextField9.getText());
-        ClienteDAO objcon = new ClienteDAO();
-        objcon.insereRegistroJFBD("MOVIMENTACAO", dados_Extrato.dadosSQLValues());
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
-    }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //LIMPAR CAMPOS
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        //CADASTRAR DADOS
+        String operacao = "INCLUIR";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            ExtratoMovimentacao dados_extrato_movimentacao = new ExtratoMovimentacao();
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //CONSULTAR CAMPOS
-        jTextField1.setText(extrato_tela.getNumConta());
-        jTextField2.setText(extrato_tela.getNumAgencia());
-        jTextField3.setText(extrato_tela.getDocumento());
-        jTextField4.setText(extrato_tela.getDataMovimentacao());
-        jTextField5.setText(extrato_tela.getCreditoOuDebito());
-        jTextField6.setText(extrato_tela.getIdHis());
-        jTextField7.setText(extrato_tela.getValor());
-        jTextField8.setText(extrato_tela.getSaldo());
-        jTextField9.setText(extrato_tela.getCompl_his());
-    }//GEN-LAST:event_jButton3ActionPerformed
+            dados_extrato_movimentacao.setNum_cc(Long.parseLong(jTextFieldNumeroConta.getText()));
+            dados_extrato_movimentacao.setNum_age(Integer.parseInt(jTextFieldNumeroAgencia.getText()));
+            dados_extrato_movimentacao.setNum_docto(jTextFieldNumeroDocumento.getText());
+            String data = jTextFieldDataMovimentacao.getText();
+            LocalDateTime dataMov = LocalDateTime.parse(data);
+            dados_extrato_movimentacao.setData_mov(dataMov);
+            dados_extrato_movimentacao.setDebito_credito(jComboBoxCartaoDC.getSelectedItem().toString());
+            dados_extrato_movimentacao.setId_his(Integer.parseInt(jTextFieldIdHistorico.getText()));
+            dados_extrato_movimentacao.setCompl_his(jTextFieldComplementoHistorico.getText());
+            dados_extrato_movimentacao.setValor(Double.parseDouble(jTextFieldValor.getText()));
+            dados_extrato_movimentacao.setSaldo(Double.parseDouble(jTextFieldSaldo.getText()));
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+            ExtratoMovimentacaoDAO objcon = new ExtratoMovimentacaoDAO();
+
+            objcon.insereRegistroJFBD("MOVIMENTACAO", dados_extrato_movimentacao.dadosSQLValues());
+
+            limparCampos();
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        //LIMPAR TELA
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        //BUSCAR DADOS
+        String operacao = "PesquisarAlterar";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ExtratoMovimentacaoDAO objcon = new ExtratoMovimentacaoDAO();
+            ExtratoMovimentacao dados_extrato_movimentacao;
+            dados_extrato_movimentacao = objcon.pesquisaRegistroJFDB("MOVIMENTACAO", "NUM_DOCTO = '"
+                    + jTextFieldNumeroDocumento.getText() + "'");
+
+            if (dados_extrato_movimentacao != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroConta.setText(String.valueOf(dados_extrato_movimentacao.getNum_cc()));
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_extrato_movimentacao.getNum_age()));
+                jTextFieldNumeroDocumento.setText(dados_extrato_movimentacao.getNum_docto());
+                LocalDateTime dataMov = dados_extrato_movimentacao.getData_mov();
+                jTextFieldDataMovimentacao.setText(dataMov.toString());
+                jComboBoxCartaoDC.setSelectedItem(dados_extrato_movimentacao.getDebito_credito().trim().toUpperCase());
+                jTextFieldIdHistorico.setText(String.valueOf(dados_extrato_movimentacao.getId_his()));
+                jTextFieldComplementoHistorico.setText(dados_extrato_movimentacao.getCompl_his());
+                jTextFieldValor.setText(String.valueOf(dados_extrato_movimentacao.getValor()));
+                jTextFieldSaldo.setText(String.valueOf(dados_extrato_movimentacao.getSaldo()));
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(false);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Extrato de Movimentacao não encontrado.");
+            }
+        }
+        operacao = "PesquisarExcluir";
+        if (operacaoAtivaGlobal.equals((operacao))) {
+            ExtratoMovimentacaoDAO objcon = new ExtratoMovimentacaoDAO();
+            ExtratoMovimentacao dados_extrato_movimentacao;
+            dados_extrato_movimentacao = objcon.pesquisaRegistroJFDB("MOVIMENTACAO", "NUM_DOCTO = '"
+                    + jTextFieldNumeroDocumento.getText() + "'");
+
+            if (dados_extrato_movimentacao != null) {
+                // Preencher os campos da tela com os dados do cliente
+                jTextFieldNumeroConta.setText(String.valueOf(dados_extrato_movimentacao.getNum_cc()));
+                jTextFieldNumeroAgencia.setText(String.valueOf(dados_extrato_movimentacao.getNum_age()));
+                jTextFieldNumeroDocumento.setText(dados_extrato_movimentacao.getNum_docto());
+                LocalDateTime dataMov = dados_extrato_movimentacao.getData_mov();
+                jTextFieldDataMovimentacao.setText(dataMov.toString());
+                jComboBoxCartaoDC.setSelectedItem(dados_extrato_movimentacao.getDebito_credito().trim().toUpperCase());
+                jTextFieldIdHistorico.setText(String.valueOf(dados_extrato_movimentacao.getId_his()));
+                jTextFieldComplementoHistorico.setText(dados_extrato_movimentacao.getCompl_his());
+                jTextFieldValor.setText(String.valueOf(dados_extrato_movimentacao.getValor()));
+                jTextFieldSaldo.setText(String.valueOf(dados_extrato_movimentacao.getSaldo()));
+
+                camposON();
+                jButtonCadastrar.setVisible(false);
+                jButtonLimpar.setVisible(true);
+                jButtonExcluir.setVisible(true);
+                jButtonConsultar.setVisible(true);
+                jButtonAlterar.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Extrato de Movimentacao não encontrado.");
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // EXCLUIR
+        ExtratoMovimentacaoDAO objcon = new ExtratoMovimentacaoDAO();
+        ExtratoMovimentacao dados_extrato_movimentacao;
+        dados_extrato_movimentacao = objcon.pesquisaRegistroJFDB("MOVIMENTACAO", "NUM_DOCTO = '"
+                + jTextFieldNumeroDocumento.getText() + "'");
+
+        jTextFieldNumeroConta.setText(String.valueOf(dados_extrato_movimentacao.getNum_cc()));
+        jTextFieldNumeroAgencia.setText(String.valueOf(dados_extrato_movimentacao.getNum_age()));
+        jTextFieldNumeroDocumento.setText(dados_extrato_movimentacao.getNum_docto());
+        LocalDateTime dataMov = dados_extrato_movimentacao.getData_mov();
+        jTextFieldDataMovimentacao.setText(dataMov.toString());
+        jComboBoxCartaoDC.setSelectedItem(dados_extrato_movimentacao.getDebito_credito().trim().toUpperCase());
+        jTextFieldIdHistorico.setText(String.valueOf(dados_extrato_movimentacao.getId_his()));
+        jTextFieldComplementoHistorico.setText(dados_extrato_movimentacao.getCompl_his());
+        jTextFieldValor.setText(String.valueOf(dados_extrato_movimentacao.getValor()));
+        jTextFieldSaldo.setText(String.valueOf(dados_extrato_movimentacao.getSaldo()));
+
+        objcon.excluirRegistroJFDB("MOVIMENTACAO", "NUM_DOCTO = '"
+                + jTextFieldNumeroDocumento.getText() + "'");
+
+        limparCampos();
+        dispose();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // ALTERAR
+        ExtratoMovimentacaoDAO objcon = new ExtratoMovimentacaoDAO();
+        ExtratoMovimentacao dados_extrato_movimentacao;
+        dados_extrato_movimentacao = objcon.pesquisaRegistroJFDB("MOVIMENTACAO", "NUM_DOCTO = '"
+                + jTextFieldNumeroDocumento.getText() + "'");
+
+        dados_extrato_movimentacao.setNum_cc(Long.parseLong(jTextFieldNumeroConta.getText()));
+        dados_extrato_movimentacao.setNum_age(Integer.parseInt(jTextFieldNumeroAgencia.getText()));
+        dados_extrato_movimentacao.setNum_docto(jTextFieldNumeroDocumento.getText());
+        String data = jTextFieldDataMovimentacao.getText();
+        LocalDateTime dataMov = LocalDateTime.parse(data);
+        dados_extrato_movimentacao.setData_mov(dataMov);
+        dados_extrato_movimentacao.setDebito_credito(jComboBoxCartaoDC.getItemAt(WIDTH));
+        dados_extrato_movimentacao.setId_his(Integer.parseInt(jTextFieldIdHistorico.getText()));
+        dados_extrato_movimentacao.setCompl_his(jTextFieldComplementoHistorico.getText());
+        dados_extrato_movimentacao.setValor(Double.parseDouble(jTextFieldValor.getText()));
+        dados_extrato_movimentacao.setSaldo(Double.parseDouble(jTextFieldSaldo.getText()));
+
+        try {
+            objcon.alteraRegistroJFDB("MOVIMENTACAO", dados_extrato_movimentacao.alteraDadosSQLValues(),
+                    "NUM_DOCTO ='" + jTextFieldNumeroDocumento.getText() + "'");
+            limparCampos();
+            dispose();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Não foi possível alterar. erro: " + erro.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -468,26 +659,28 @@ public class ViewExtratoMovimentacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JComboBox<String> jComboBoxCartaoDC;
+    private javax.swing.JLabel jLabelCartaoDC;
+    private javax.swing.JLabel jLabelComplementoHistorico;
+    private javax.swing.JLabel jLabelDataMovimentacao;
+    private javax.swing.JLabel jLabelIdHistorico;
+    private javax.swing.JLabel jLabelNumeroAgencia;
+    private javax.swing.JLabel jLabelNumeroConta;
+    private javax.swing.JLabel jLabelNumeroDocumento;
+    private javax.swing.JLabel jLabelSaldo;
+    private javax.swing.JLabel jLabelValor;
+    private javax.swing.JTextField jTextFieldComplementoHistorico;
+    private javax.swing.JTextField jTextFieldDataMovimentacao;
+    private javax.swing.JTextField jTextFieldIdHistorico;
+    private javax.swing.JTextField jTextFieldNumeroAgencia;
+    private javax.swing.JTextField jTextFieldNumeroConta;
+    private javax.swing.JTextField jTextFieldNumeroDocumento;
+    private javax.swing.JTextField jTextFieldSaldo;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 }

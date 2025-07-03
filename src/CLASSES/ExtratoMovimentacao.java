@@ -9,7 +9,6 @@ package CLASSES;
  */
 import UTIL.ExtratoValidator;
 import java.time.LocalDateTime;
-import java.math.BigDecimal;
 
 public class ExtratoMovimentacao {
 
@@ -160,6 +159,22 @@ public class ExtratoMovimentacao {
                 + this.getCompl_his() + "', '"
                 + this.getValor() + "', '"
                 + this.getSaldo() + "'";
+        return dadosExtratoMovimentacao;
+    }
+
+    public String alteraDadosSQLValues() {
+        String dadosExtratoMovimentacao;
+        dadosExtratoMovimentacao = "NUM_AGE ='"
+                + this.getNum_age() + "', NUM_CC ='"
+                + this.getNum_cc() + "', DATA_MOV ='"
+                + this.getData_mov()+ "', NUM_DOCTO ='"
+                + this.getNum_docto()+ "', DEBITO_CREDITO ='"
+                + this.getDebito_credito()+ "', ID_HISTORICO ='"
+                + this.getId_his()+ "', COMPLEMENTO_HIS ='"
+                + this.getCompl_his()+ "', VALOR ='"
+                + this.getValor()+ "', SALDO ='"
+                + this.getSaldo()+ "'";
+
         return dadosExtratoMovimentacao;
     }
 }

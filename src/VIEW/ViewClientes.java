@@ -37,6 +37,7 @@ public class ViewClientes extends javax.swing.JFrame {
         jTextFieldCNPJ.setText(" ");
         jTextFieldCEP.setText(" ");
         jTextFieldEmail.setText(" ");
+        
         jComboBoxSexo.setSelectedIndex(0);
         jComboBoxUF.setSelectedIndex(0);
     }
@@ -55,6 +56,7 @@ public class ViewClientes extends javax.swing.JFrame {
         jLabelComplemento.setVisible(true);
         jLabelNumero.setVisible(true);
         jLabelUF.setVisible(true);
+        
         jTextFieldNome.setVisible(true);
         jTextFieldEndereco.setVisible(true);
         jTextFieldBairro.setVisible(true);
@@ -66,6 +68,7 @@ public class ViewClientes extends javax.swing.JFrame {
         jTextFieldCidade.setVisible(true);
         jTextFieldComplemento.setVisible(true);
         jTextFieldNumero.setVisible(true);
+        
         jComboBoxSexo.setVisible(true);
         jComboBoxUF.setVisible(true);
     }
@@ -84,6 +87,7 @@ public class ViewClientes extends javax.swing.JFrame {
         jLabelComplemento.setVisible(false);
         jLabelNumero.setVisible(false);
         jLabelUF.setVisible(false);
+        
         jTextFieldNome.setVisible(false);
         jTextFieldEndereco.setVisible(false);
         jTextFieldBairro.setVisible(false);
@@ -95,6 +99,7 @@ public class ViewClientes extends javax.swing.JFrame {
         jTextFieldCidade.setVisible(false);
         jTextFieldComplemento.setVisible(false);
         jTextFieldNumero.setVisible(false);
+        
         jComboBoxSexo.setVisible(false);
         jComboBoxUF.setVisible(false);
     }
@@ -482,6 +487,7 @@ public class ViewClientes extends javax.swing.JFrame {
         String operacao = "INCLUIR";
         if (operacaoAtivaGlobal.equals(operacao)) {
             Cliente dados_cliente = new Cliente();
+            
             dados_cliente.setNome(jTextFieldNome.getText());
             dados_cliente.setEndereco(jTextFieldEndereco.getText());
             dados_cliente.setBairro(jTextFieldBairro.getText());
